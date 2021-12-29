@@ -38,6 +38,7 @@ Contents
 --------
 
 * [Who Is This For?](#who-is-this-for)
+* [What About Programming in CL?](#what-about-programming-in-cl)
 * [Features](#features)
 * [Get Started](#get-started)
 * [Step-by-Step Usage](#step-by-step-usage)
@@ -80,6 +81,27 @@ The [`.emacs`] file in this project provides a quick way to get
 started with setting up your Emacs environment. This document explains
 how to do so in a step-by-step manner. This document also explains the
 content of [`.emacs`] and [`em`] in a line-by-line manner.
+
+
+What About Programming in CL?
+-----------------------------
+
+This section is a little note for aspiring Common Lisp (CL)
+programmers. If you do not care about Common Lisp programming, ignore
+this section.
+
+For those who wish to use Emacs specifically for programming in CL,
+please see [Emacs4CL](https://github.com/susam/emacs4cl). Emacs4CL is
+similar to this project, however, Emacs4CL focusses primarily on
+setting up a CL development environment with Emacs, SBCL, and SLIME,
+as quickly as possible. This project, on the other hand, focusses only
+on setting up a general purpose editing and programming environment.
+
+Once you have set up your CL development environment using Emacs4CL,
+you can then come back to this project and pick more ideas and Emacs
+Lisp code to enhance your Emacs setup from being a CL development
+environment to being a more general purpose editing and programming
+environment.
 
 
 Features
