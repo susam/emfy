@@ -160,7 +160,7 @@ result looks like. Perform the following steps to get started:
     home directory. Here is an example `curl` command to do so:
 
     ```sh
-    curl -L https://github.com/susam/emfy/raw/master/.emacs >> ~/.emacs
+    curl -L https://github.com/susam/emfy/raw/main/.emacs >> ~/.emacs
     ```
 
  3. Copy the Emacs launcher script [`em`] provided here to some
@@ -169,7 +169,7 @@ result looks like. Perform the following steps to get started:
     the `/usr/local/bin/` directory:
 
     ```sh
-    curl -L https://github.com/susam/emfy/raw/master/em >> /tmp/em
+    curl -L https://github.com/susam/emfy/raw/main/em >> /tmp/em
     sudo mv /tmp/em /usr/local/bin/em
     chmod +x /usr/local/bin/em
     ```
