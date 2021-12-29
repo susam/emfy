@@ -67,6 +67,7 @@
 
 ;; Write customizations to ~/.emacs.d/custom.el instead of this file.
 (setq custom-file "~/.emacs.d/custom.el")
+(load custom-file t t)
 
 ;; Install packages.
 (setq package-list '(markdown-mode paredit rainbow-delimiters))
