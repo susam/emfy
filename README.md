@@ -541,11 +541,13 @@ Here is a line-by-line explanation of the UI tweaks in [`.emacs`]:
     term *window* refers to what we usually call split panes these
     days.
 
-    If you are a beginner to Emacs, you might find the menu bar helpful
-    initially, so you might not want this line in your Emacs
-    initialization file. In that case, remove this line or just comment
-    it out by inserting a semicolon (i.e., `;`) before the opening
-    parentheses.
+    Many users find the menu bar helpful because it helps in
+    discovering new features. Even with the menu bar hidden with the
+    above line of Emacs Lisp code, the menu bar can be accessed
+    anytime easily by typing `<f10>`. If you really want the menu bar
+    to be visible at all times, remove the above line of Emacs Lisp
+    code or just comment it out by inserting a semicolon (i.e., `;`)
+    before the opening parentheses.
 
   - Hide the tool bar and scroll bar:
 
