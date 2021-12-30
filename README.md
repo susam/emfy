@@ -1468,22 +1468,20 @@ In this section we will see how to make our own custom command.
 ### Emacs Server
 
 Many users prefer to run a single instance of Emacs and do all their
-editing activities via this single instance. However, this practice
-may seem inconvenient to users who discover some files they want to
-edit while navigating the file system via a terminal.
-
-Say, we have an instance of Emacs already running. Then we find a file
-named `foo.txt` while navigating the file system via a terminal. We
-now want to edit this file using Emacs. Running `emacs foo.txt` on the
-terminal would launch a second instance of the Emacs, thus violating
-the practice of editing all files using a single instance of Emacs.
-But leaving the terminal to reach the existing Emacs frame and then
-typing `C-x C-f` followed by the entire path of the file `foo.txt` may
-feel inconvenient.
-
-Fortunately, there is a way to run an Emacs command on the terminal
-that opens new files in an existing instance of Emacs. This section
-explains how to accomplish this.
+editing activities via this single instance. It is possible to use
+Emacs alone for all file browsing needs and never use the terminal
+again. Despite the sophisticated terminal and file browsing
+capabilities of Emacs, some users still like to use a traditional
+terminal to move around a file system, find files, and edit them. This
+practice may become inconvenient quite soon because it would lead to
+the creation of too many Emacs frames (desktop-level windows) and
+processes. This section explains how to create a single Emacs server,
+a single Emacs frame, and edit all your files in this frame via the
+server even while you are browsing files in the terminal. You don't
+need this section and the next one if you use Emacs for all your file
+browsing needs but if you don't, this section may be useful. Let us
+now see how we start the Emacs server in our Emacs initialization
+file.
 
   - This is necessary to use the function `server-running-p` coming up
     in the next point:
@@ -1539,17 +1537,23 @@ the following commands can be used on a terminal to edit files:
     command exits immediately and the shell prompt returns immediately
     on the terminal.
 
-Note that the Emacs server quits automatically when we close the first
-Emacs instance that started the Emacs server. Running the `emacs`
-command or starting Emacs via another method after that would start
-the Emacs server again.
+With this setup, the Emacs server quits automatically when we close
+the first Emacs instance that started the Emacs server. Running the
+`emacs` command or starting Emacs via another method after that would
+start the Emacs server again.
 
-Further, note that there is no need to run the `emacs` or
-`emacsclient` directly. This project provides an `em` command that
-seamlessly chooses the right command depending on the situation. This
-command is explained in the next section, so move on to the next
-section and use the `em` command on the terminal to start Emacs or
-edit files.
+It is worth noting here that there are other ways to start the Emacs
+server and to use the `emacsclient` command. See section [Using Emacs
+as a Server][emacs-server-doc] and section [`emacsclient`
+Options][emacs-client-doc] for more details.
+
+This project also provides an `em` command that seamlessly chooses the
+right command depending on the situation. This command is explained in
+the next section, so move on to the next section and use the `em`
+command on the terminal to start Emacs or edit files.
+
+[emacs-server-doc]: https://www.gnu.org/software/emacs/manual/html_node/emacs/Emacs-Server.html
+[emacs-client-doc]: https://www.gnu.org/software/emacs/manual/html_node/emacs/emacsclient-Options.html
 
 
 ## Emacs Launcher
@@ -1564,7 +1568,10 @@ too long to type conveniently.
 
 In this section, we see how a single script named `em` automatically
 decides whether to run `emacs` or `emacsclient` depending on the
-situation. As a user, we only need to run the `em` command always.
+situation. As a user, we only need to run the `em` command always. As
+mentioned in the previous section, you don't need this section if you
+use Emacs for all your file browsing needs but if you don't, this
+section may be useful.
 
 The `em` script should be already present on the system if the steps
 in the [Get Started](#get-started) section were followed. The third
