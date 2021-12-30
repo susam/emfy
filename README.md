@@ -49,7 +49,7 @@ Contents
 * [Line-by-Line Explanation](#line-by-line-explanation)
   * [Tweak UI Elements](#tweak-ui-elements)
   * [Customize Theme](#customize-theme)
-  * [Find Files and Switch Buffers Efficiently](#find-files-and-switch-buffers-efficiently)
+  * [Find Files and Buffers Efficiently](#find-files-and-buffers-efficiently)
   * [Show Stray Whitespace](#show-stray-whitespace)
   * [Let Single Space After Period End Sentence](#let-single-space-after-period-end-sentence)
   * [Indentation](#indentation)
@@ -638,7 +638,7 @@ have chosen tangerine yellow for comments in the last point above, so
 that the comments are easily noticeable.
 
 
-### Find Files and Switch Buffers Efficiently
+### Find Files and Buffers Efficiently
 
 Emacs comes with Ido mode that can be used to open files and switch
 between buffers with a minimum number of keystrokes.
