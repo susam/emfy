@@ -211,9 +211,14 @@ result looks like. Perform the following steps to get started:
     curl -L https://github.com/susam/emfy/raw/main/.emacs >> ~/.config/emacs/init.el
     ```
 
-    Most users these days prefer one of the last two locations because
-    it allows all Emacs configuration to conveniently remain in one
-    directory.
+    Emacs can automatically load the Emacs initialization file from
+    any of the paths used above. See section [The Emacs Initialization
+    File][emacs-init-doc] of the Emacs manual for more details about
+    this. Most users these days prefer one of the last two locations
+    because it allows all Emacs configuration to conveniently remain
+    in one directory.
+
+    [emacs-init-doc]: https://www.gnu.org/software/emacs/manual/html_node/emacs/Init-File.html
 
  3. Copy the Emacs launcher script [`em`] provided here to some
     directory that belongs to your `PATH` variable. For example, here
