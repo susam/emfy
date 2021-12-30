@@ -136,6 +136,7 @@ following features:
   - Highlight matching parentheses.
   - Move auto-save files and backup files to a separate directory to
     keep our working directories tidy.
+  - Do not move original files while creating backups.
   - Automatically install configured packages when Emacs starts for
     the first time.
   - Install Markdown mode for convenient editing of Markdown files.
@@ -1106,6 +1107,39 @@ these files at a different location.
     too clutter our working direcories. The above line of Emacs Lisp
     code ensures that all backup files are written to a separate
     directory, thus leaving our working directories tidy.
+
+  - Create backup files by copying our files, not moving our files:
+
+    ```elisp
+    (setq backup-by-copying t)
+    ```
+
+    Everytime Emacs has to create a backup file, it moves our file to
+    the backup location, then creates a new file at the same location
+    as that of the one we are editing, copies our content to this new
+    file, and then resumes editing our file. This causes any hard link
+    referring to the original file to be now referring to the backup
+    file.
+
+    To experience this problem due to the default behaviour, first
+    comment out the above line of Emacs Lisp code in the Emacs
+    initialization file, save the file, and restart Emacs. Then create
+    a new file along with a hard link to it with these commands: `echo
+    foo > foo.txt; ln foo.txt bar.txt; ls -li foo.txt bar.txt`. The
+    output should show that `foo.txt` and `bar.txt` have the same
+    inode number and size because they both refer to the same file.
+    Now run `emacs foo.txt` to edit the file, add a line or two to the
+    file, and save the file with `C-x C-s`. Now run `ls -li foo.txt
+    bar.txt` again. The output should show that `foo.txt` now has a
+    new inode number and size while `bar.txt` still has the original
+    inode number and size. The file `bar.txt` now refers to the backup
+    file instead of referring to the new `foo.txt` file.
+
+    To see the improved behaviour with the above line of Emacs Lisp
+    code, uncomment it to enable it again in the Emacs initialization
+    file, save the file, restart Emacs and perform the same experiment
+    again. After we save the file, we should see that both `foo.txt`
+    and `bar.txt` have the same inode number and size.
 
   - Disable lockfiles:
 

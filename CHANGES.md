@@ -16,6 +16,7 @@
 - Use spaces, not tabs, for indentation.
 - Enable `show-paren-mode` to highlight matching parentheses.
 - Write auto-saves and backups to `~/.emacs.d/backup/`.
+- Do not move the current file while creating backup.
 - Disable lockfiles.
 - Workaround for https://debbugs.gnu.org/34341 in GNU Emacs <= 26.3.
 - Automatic installation of packages from MELPA.
