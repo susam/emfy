@@ -361,10 +361,12 @@ them. The fingers do what the mind wants effortlessly due to muscle
 memory.
 
 While you are getting used to the Emacs key bindings, keep this [GNU
-Emacs Reference Card][emacs-ref] handy. Also, if you are using it in GUI
-mode, then the menu options can be quite helpful. The menu options
+Emacs Reference Card][emacs-ref] handy. Also, if you are using it in
+GUI mode, then the menu options can be quite helpful. The menu options
 contain frequently used operations. The option for each operation also
-displays the key bindings that can be used to invoke the same operation.
+displays the key bindings that can be used to invoke the same
+operation. If you have hidden the menu bar, you can always invoke it
+by typing `<f10>`.
 
 [emacs-ref]: https://www.gnu.org/software/emacs/refcards/pdf/refcard.pdf
 
@@ -543,7 +545,7 @@ Here is a line-by-line explanation of the UI tweaks in [`.emacs`]:
 
     Many users find the menu bar helpful because it helps in
     discovering new features. Even with the menu bar hidden with the
-    above line of Emacs Lisp code, the menu bar can be accessed
+    above line of Emacs Lisp code, the menu  can be accessed
     anytime easily by typing `<f10>`. If you really want the menu bar
     to be visible at all times, remove the above line of Emacs Lisp
     code or just comment it out by inserting a semicolon (i.e., `;`)
