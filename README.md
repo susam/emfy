@@ -534,13 +534,12 @@ Here is a line-by-line explanation of the UI tweaks in [`.emacs`]:
     ```
 
     When Emacs runs in a GUI window, by default, it starts with a menu
-    bar, tool bar, and scroll bar. Experienced users use Emacs
-    completely through the keyboard via the various key bindings for
-    various operations, so many of them hide these additional bars to
-    make the Emacs frame look clean and minimal. Note that in Emacs,
-    the term *frame* refers to the GUI window or the region of the
-    desktop where Emacs is displayed. In Emacs, the term *window*
-    refers to what we usually call split panes these days.
+    bar, tool bar, and scroll bar. Many (but not all) users like to
+    hide them in order to make the Emacs frame look clean and minimal.
+    Note that in Emacs, the term *frame* refers to the GUI window or
+    the region of the desktop where Emacs is displayed. In Emacs, the
+    term *window* refers to what we usually call split panes these
+    days.
 
     If you are a beginner to Emacs, you might find the menu bar helpful
     initially, so you might not want this line in your Emacs
@@ -1116,24 +1115,31 @@ these files at a different location.
     file, then warn us that the file is locked by another Emacs
     session, and provide us a few options regarding whether we want to
     steal the lock, proceed with editing anyway, or quit editing it.
-    These lock files are removed automatically as soon as we save our
+    These lockfiles are removed automatically as soon as we save our
     edits but until then they clutter our directories. Unlike
     auto-save files and backup files, there is no way to tell Emacs to
     write these files to a different directory. We can however disable
     lockfile creation with the above line of Emacs Lisp code.
 
-    Note that disabling lockfiles could be risky if you are in the
-    habit of launching multiple Emacs instances while editing files.
-    With such a habit, it is easy to make the mistake of opening the
-    same file in two different Emacs instances and inadvertently
-    overwrite changes made via one instance with changes made via
-    another instance. However, experienced Emacs users launch only a
-    single instance of Emacs for the entire lifetime of their desktop
-    session and edit all files via that single instance. The [Emacs
-    Server](#emacs-server) and [Emacs Launcher](#emacs-launcher)
-    sections later discuss techniques about how to make this usage
-    style more convenient. If you are willing to follow this style of
-    using Emacs, then it may be okay to disable lockfiles.
+    **Caution:** Note that disabling lockfiles could be risky if you
+    are in the habit of launching multiple Emacs instances while
+    editing files. With such a habit, it is easy to make the mistake
+    of opening the same file in two different Emacs instances and
+    inadvertently overwrite changes made via one instance with changes
+    made via another instance. The lockfiles are hidden files anyway,
+    so they should not bother you in directory listings. If they
+    bother you in, say, `git status` output, consider ignoring the
+    lockfiles in `.gitignore` instead of disabling them. Having said
+    that, it may be okay to disable lockfiles if you are in the habit
+    of launching only a single instance of Emacs for the entire
+    lifetime of their desktop session and edit all files via that
+    single instance. The [Emacs Server](#emacs-server) and [Emacs
+    Launcher](#emacs-launcher) sections later discuss techniques about
+    how to make this usage style more convenient. If you are willing
+    to follow this style of using Emacs, then it may be okay to
+    disable lockfiles. To summarize, if you are in doubt, comment out
+    or remove the above line of Emacs Lisp code to keep lockfiles
+    enabled.
 
 
 ### Install Packages
@@ -1423,10 +1429,10 @@ In this section we will see how to make our own custom command.
 
 ### Emacs Server
 
-Experienced Emacs users run a single instance of Emacs and do all
-their editing activities via this single instance. However, this
-practice may seem inconvenient to users who discover some files they
-want to edit while navigating the file system via a terminal.
+Many users prefer to run a single instance of Emacs and do all their
+editing activities via this single instance. However, this practice
+may seem inconvenient to users who discover some files they want to
+edit while navigating the file system via a terminal.
 
 Say, we have an instance of Emacs already running. Then we find a file
 named `foo.txt` while navigating the file system via a terminal. We
