@@ -1547,11 +1547,6 @@ server and to use the `emacsclient` command. See section [Using Emacs
 as a Server][emacs-server-doc] and section [`emacsclient`
 Options][emacs-client-doc] for more details.
 
-This project also provides an `em` command that seamlessly chooses the
-right command depending on the situation. This command is explained in
-the next section, so move on to the next section and use the `em`
-command on the terminal to start Emacs or edit files.
-
 [emacs-server-doc]: https://www.gnu.org/software/emacs/manual/html_node/emacs/Emacs-Server.html
 [emacs-client-doc]: https://www.gnu.org/software/emacs/manual/html_node/emacs/emacsclient-Options.html
 
@@ -1561,17 +1556,22 @@ command on the terminal to start Emacs or edit files.
 In the previous section, we saw how our Emacs initialization file
 ensures that an Emacs server is started when we run `emacs` for the
 first time. Once Emacs server has started, we can edit new files from
-the terminal using the `emacsclient` command. However, this means we
-need to use two different commands depending on whether we are
-starting Emacs for the first time or not. Further, `emacsclient` is
-too long to type conveniently.
+the terminal using the `emacsclient` command. This section describes a
+script named `em` that can automatically decide whether to run `emacs`
+or `emacsclient` depending on the situation.
 
-In this section, we see how a single script named `em` automatically
-decides whether to run `emacs` or `emacsclient` depending on the
-situation. As a user, we only need to run the `em` command always. As
-mentioned in the previous section, you don't need this section if you
-use Emacs for all your file browsing needs but if you don't, this
-section may be useful.
+As mentioned in the previous section, you don't need this section if
+you use Emacs for all your file browsing needs but if you don't, this
+section may be useful. Further, it is worth mentioning that this
+script solves a very specific problem of using a single command named
+`em` to both launch a new Emacs server as well as to open existing
+files in an existing Emacs frame via the existing Emacs server. If you
+have this specific problem, you may find this script helpful. However,
+if you do not have this problem or if you have a different problem to
+solve, it would be useful to understand how `emacsclient` works and
+read the related documentation mentioned in the previous section and
+then modify this script or write your own shell script, shell alias,
+or shell function that solves your problems.
 
 The `em` script should be already present on the system if the steps
 in the [Get Started](#get-started) section were followed. The third
@@ -1635,8 +1635,8 @@ ways of using this script as a command:
     be used multiple times as needed for editing files while browsing
     the file system in a terminal.
 
-That's it! Only two commands to remember. Start Emacs with `em` and
-edit files with `em foo.txt`, `em foo.txt bar.txt`, etc.
+That's it! Only two things to remember from this section: start Emacs
+with `em` and edit files with `em foo.txt`, `em foo.txt bar.txt`, etc.
 
 
 Opinion References
