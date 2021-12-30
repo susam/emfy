@@ -187,12 +187,33 @@ result looks like. Perform the following steps to get started:
     For other environments, visit https://www.gnu.org/software/emacs/
     to see how to install Emacs.
 
- 2. Copy the Emacs initialization file [`.emacs`] provided here to your
-    home directory. Here is an example `curl` command to do so:
+ 2. Copy the Emacs initialization file [`.emacs`] provided here to
+    your home directory. Here is an example `curl` command that copies
+    the initialization file to its traditional location:
 
     ```sh
     curl -L https://github.com/susam/emfy/raw/main/.emacs >> ~/.emacs
     ```
+
+    Here is another alternative that copies the initialization file to
+    a more convenient location:
+
+    ```sh
+    mkdir ~/.emacs.d
+    curl -L https://github.com/susam/emfy/raw/main/.emacs >> ~/.emacs.d/init.el
+    ```
+
+    Yet another popular alternative is to copy the initialization file
+    to an XDG-compatible location as follows:
+
+    ```sh
+    mkdir -p ~/.config/emacs
+    curl -L https://github.com/susam/emfy/raw/main/.emacs >> ~/.config/emacs/init.el
+    ```
+
+    Most users these days prefer one of the last two locations because
+    it allows all Emacs configuration to conveniently remain in one
+    directory.
 
  3. Copy the Emacs launcher script [`em`] provided here to some
     directory that belongs to your `PATH` variable. For example, here
@@ -1188,7 +1209,7 @@ Emacs packages we need:
     `~/.emacs.d/custom.el` with the following code:
 
     ```elisp
-    (setq custom-file "~/.emacs.d/custom.el")
+    (setq custom-file (concat user-emacs-directory "custom.el"))
     ```
 
   - Install some packages:
