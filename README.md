@@ -1534,10 +1534,10 @@ the following commands can be used on a terminal to edit files:
     files, the `emacsclient` command exits and the shell prompt
     returns on the terminal.
 
-  - `emacsclient foo.txt bar.txt`: Opens files in the existing Emacs
-    instance but does not wait for us to finish editing. The command
-    exits immediately and the shell prompt returns immediately on the
-    terminal.
+  - `emacsclient -n foo.txt bar.txt`: Opens files in the existing
+    Emacs instance but does not wait for us to finish editing. The
+    command exits immediately and the shell prompt returns immediately
+    on the terminal.
 
 Note that the Emacs server quits automatically when we close the first
 Emacs instance that started the Emacs server. Running the `emacs`
