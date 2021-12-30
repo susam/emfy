@@ -1050,17 +1050,17 @@ these files at a different location.
   - Create a directory to keep auto-save files:
 
     ```elisp
-    (make-directory "~/.emacs.d/backup/" t)
+    (make-directory "~/.tmp/emacs/auto-save/" t)
     ```
 
     In the next point, we discuss auto-save files in detail and ask
-    Emacs to write auto-save files to `~/.emacs.d/backup/` instead of
+    Emacs to write auto-save files to a separate directory instead of
     writing them to our working directory. Before we do that, we need
-    to create the `~/.emacs.d/backup/` directory, otherwise Emacs
-    would fail to write the auto-save files and display the following
-    error: `Error (auto-save): Auto-saving foo.txt: Opening output
-    file: No such file or directory,
-    /Users/susam/.emacs.d/backup/#!tmp!foo.txt#`.
+    to create the directory we will write the auto-save files to,
+    otherwise Emacs would fail to write the auto-save files and
+    display the following error: `Error (auto-save): Auto-saving
+    foo.txt: Opening output file: No such file or directory,
+    /Users/susam/.tmp/emacs/auto-save/#!tmp!foo.txt#`
 
     Note that this issue occurs only for auto-save files, not for
     backup files discussed in the third point of this list. If the
@@ -1072,28 +1072,29 @@ these files at a different location.
   - Write auto-save files to a separate directory:
 
     ```elisp
-    (setq auto-save-file-name-transforms '((".*" "~/.emacs.d/backup/" t)))
+    (setq auto-save-file-name-transforms '((".*" "~/.tmp/emacs/auto-save/" t)))
     ```
 
     If we open a new file or edit an existing file, say, `foo.txt` and
     make some changes that have not been saved yet, Emacs
     automatically creates an auto-save file named `#foo.txt#` in the
-    same directory as `foo.txt` to ensure that the unsaved changes are
-    not lost inadvertently. For example, if the system crashes
-    suddenly while we are editing a file `foo.txt`, the auto-save file
-    would keep a copy of our unsaved worked. The next time we try to
-    edit `foo.txt`, Emacs would warn that auto-save data already
-    exists and it would then suggest us to recover the auto-save data
-    using `M-x recover-this-file RET`. These auto-save files are
-    removed automatically after we save our edits but until then they
-    clutter our working directories. The above line of Emacs Lisp code
-    ensures that all auto-save files are written to a separate
-    directory, thus leaving our working directories tidy.
+    same directory as `foo.txt` every 300 keystrokes, or after 30
+    seconds of inactivity. Emacs does this to ensure that the unsaved
+    changes are not lost inadvertently. For example, if the system
+    crashes suddenly while we are editing a file `foo.txt`, the
+    auto-save file would keep a copy of our unsaved worked. The next
+    time we try to edit `foo.txt`, Emacs would warn that auto-save
+    data already exists and it would then suggest us to recover the
+    auto-save data using `M-x recover-this-file RET`. These auto-save
+    files are removed automatically after we save our edits but until
+    then they clutter our working directories. The above line of Emacs
+    Lisp code ensures that all auto-save files are written to a
+    separate directory, thus leaving our working directories tidy.
 
   - Write backup files to a separate directory:
 
     ```elisp
-    (setq backup-directory-alist '(("." . "~/.emacs.d/backup/")))
+    (setq backup-directory-alist '(("." . "~/.tmp/emacs/backup/")))
     ```
 
     If we create a new file or edit an existing file, say, `foo.txt`,

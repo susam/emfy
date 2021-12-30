@@ -47,9 +47,9 @@
 (show-paren-mode)
 
 ;; Write auto-saves and backups to separate directory.
-(make-directory "~/.emacs.d/backup/" t)
-(setq auto-save-file-name-transforms '((".*" "~/.emacs.d/backup/" t)))
-(setq backup-directory-alist '(("." . "~/.emacs.d/backup/margo/")))
+;(make-directory "~/.tmp/emacs/auto-save/" t)
+(setq auto-save-file-name-transforms '((".*" "~/.tmp/emacs/auto-save/" t)))
+;(setq backup-directory-alist '(("." . "~/.tmp/emacs/backup/")))
 
 ;; Disable lockfiles.
 (setq create-lockfiles nil)
