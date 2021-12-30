@@ -1533,31 +1533,19 @@ in the [Get Started](#get-started) section were followed. The third
 step there installs this script to `/usr/local/bin/em`. Now we discuss
 every line of this script in detail.
 
-  - We run this script with a shell that supports the `disown` command
-    we will use later. Since GNU Bash is one such shell and it is
-    available by default on a wide variety of Unix and Linux systems,
-    the shebang line of our [`em`] script is set to:
-
-    ```sh
-    #!/bin/bash
-    ```
-
-    If Bash is missing from your system, change the interpreter path
-    in the shebang line to `/bin/zsh` or `/bin/ksh` or the path of any
-    other shell that supports the `disown` command.
-
   - When `em` is run without any arguments, start a new Emacs process:
 
     ```sh
+    #!/bin/sh
     if [ "$#" -eq 0 ]
     then
         echo "Starting new Emacs process ..." >&2
-        emacs & disown
+        nohup emacs &
     ```
 
     This Emacs process launches a new Emacs frame. Further, if an
     Emacs server is not running, it starts a new Emacs server. The
-    `disown` command ensures that this Emacs process is not terminated
+    `nohup` command ensures that this Emacs process is not terminated
     when we close the terminal or the shell where we ran the `em`
     command.
 
@@ -1582,7 +1570,7 @@ every line of this script in detail.
     ```sh
     else
         echo "Opening $@ in a new Emacs process ..." >&2
-        emacs "$@" & disown
+        nohup emacs "$@" &
     fi
     ```
 

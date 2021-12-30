@@ -1,5 +1,4 @@
 #!/bin/sh
-
 if [ "$#" -eq 0 ]
 then
     echo "Starting new Emacs process ..." >&2
