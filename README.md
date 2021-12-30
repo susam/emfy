@@ -82,6 +82,15 @@ started with setting up your Emacs environment. This document explains
 how to do so in a step-by-step manner. This document also explains the
 content of [`.emacs`] and [`em`] in a line-by-line manner.
 
+Note that many customizations in the Emacs initialization file
+available in this project are a result of the author's preferences.
+They may or may not match others' preferences. They may or may not
+suit your taste and requirements. Wherever applicable, the pros and
+cons of each customization and possible alternatives are discussed in
+this document. You are encouraged to read the line-by-line explanation
+that comes later in this document, understand each customization, and
+modify the initialization file to suit your needs.
+
 
 What About Programming in CL?
 -----------------------------
