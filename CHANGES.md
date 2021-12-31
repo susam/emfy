@@ -1,4 +1,4 @@
-0.1.0 (UNRELEASED)
+0.1.0 (2021-12-31)
 ------------------
 
 ### Added
@@ -32,3 +32,4 @@
 - Custom command to show current time.
 - Custom key sequence to show current time.
 - Start Emacs server automatically, if it is not running already.
+- Command named `em` to run Emacs server and client.
