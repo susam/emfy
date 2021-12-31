@@ -1,4 +1,4 @@
-;;; Emfy 0.1.0-dev <https://github.com/susam/emfy>
+;;; Emfy 0.1.0 <https://github.com/susam/emfy>
 
 ;; Customize user interface.
 (menu-bar-mode 0)
