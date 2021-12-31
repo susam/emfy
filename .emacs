@@ -105,11 +105,9 @@
 
 ;; Custom command.
 (defun show-current-time ()
-  "Show current time for 2 seconds."
+  "Show current time."
   (interactive)
-  (message (current-time-string))
-  (sleep-for 2)
-  (message nil))
+  (message (current-time-string)))
 
 ;; Custom key-binding.
 (global-set-key (kbd "C-c t") 'show-current-time)

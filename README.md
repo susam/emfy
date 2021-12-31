@@ -1513,11 +1513,9 @@ In this section we will see how to make our own custom command.
 
     ```elisp
     (defun show-current-time ()
-      "Show current time for 2 seconds."
+      "Show current time."
       (interactive)
-      (message (current-time-string))
-      (sleep-for 2)
-      (message nil))
+      (message (current-time-string)))
     ```
 
     This command can be invoked by typing `M-x show-current-time RET`.
