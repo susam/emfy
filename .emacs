@@ -1,4 +1,4 @@
-;;; Emfy 0.1.0 <https://github.com/susam/emfy>
+;;; Emfy 0.2.0-dev <https://github.com/susam/emfy>
 
 ;; Customize user interface.
 (menu-bar-mode 0)
@@ -22,6 +22,7 @@
 (ido-mode 1)
 (ido-everywhere)
 (setq ido-enable-flex-matching t)
+(fido-mode)
 
 ;; Show stray whitespace.
 (setq-default show-trailing-whitespace t)

@@ -49,10 +49,11 @@ Contents
 * [Line-by-Line Explanation](#line-by-line-explanation)
   * [Tweak UI Elements](#tweak-ui-elements)
   * [Customize Theme](#customize-theme)
-  * [Find Files and Buffers Efficiently](#find-files-and-buffers-efficiently)
+  * [Minibuffer Completion](#minibuffer-completion)
   * [Show Stray Whitespace](#show-stray-whitespace)
-  * [Let Single Space After Period End Sentence](#let-single-space-after-period-end-sentence)
+  * [Single Space for Sentence Spacing](#single-space-for-sentence-spacing)
   * [Indentation](#indentation)
+  * [Keep Working Directory Tidy](#keep-working-directory-tidy)
   * [Highlight Parentheses](#highlight-parentheses)
   * [Install Packages](#install-packages)
   * [Add Hooks](#add-hooks)
@@ -677,10 +678,20 @@ have chosen tangerine yellow for comments in the last point above, so
 that the comments are easily noticeable.
 
 
-### Find Files and Buffers Efficiently
+### Minibuffer Completion
 
-Emacs comes with Ido mode that can be used to open files and switch
-between buffers with a minimum number of keystrokes.
+Emacs comes with Ido mode and Fido mode that help with opening files,
+switching between buffers, entering commands, etc. quite efficiently.
+Ido incrementally searches for file and buffer names as we type out
+the names, list the matching names, and automatically completes the
+minibuffer with the best match. Fido mode offers much of the same
+functionality that Ido mode provides and additionally helps in
+automatically completing inputs in all types of minibuffer prompts
+(even those not related to files and buffers).
+
+Strictly speaking, it is not necessary to enable Ido mode if we are
+going to enable Fido mode but both modes have their areas of strength,
+so we are going to enable both to get the best of both modes.
 
   - Enable Ido mode:
 
@@ -733,6 +744,42 @@ between buffers with a minimum number of keystrokes.
     the name. Without this variable setting, the string we type must
     always be a valid substring (with no characters omitted within the
     substring) of the name we want to search.
+
+  - Perform automatic completions for all kinds of minibuffer inputs:
+
+    ```elisp
+    (fido-mode)
+    ```
+
+    This mode allows us to perform automatic completions in all kinds
+    of minibuffer inputs, not just while finding files and buffers.
+    For example, type `M-x wspmod` and Fido mode should immediately
+    autocomplete the partial command `wspmod` to `whitespace-mode`.
+
+As explained at the beginning of this section, Ido mode is not really
+necessary if we are going to enable Fido mode. But Ido mode has some
+nice features for file name completion that Fido mode does not have.
+That is why we enable both Ido mode and Fido mode in this section. For
+example, Ido mode can search for visited subdirectories for file name
+matches which can be quite convenient. Fido mode cannot do this.
+
+To test how Fido mode completes file names, first create a test
+directory of files as follows: `mkdir -p /tmp/a/b/; touch
+/tmp/a/b/foo.txt; touch /tmp/a/b/bar.txt`. Then comment out the
+`(ido-mode 1)` and `(ido-everywhere)` lines in the Emacs
+initialization file, save the file, and restart Emacs, so that Ido
+mode is disabled and only Fido mode is enabled. Now type `C-x C-f
+/tmp/a/b/foo RET`. Then type `C-x C-f /tmp/bar`. Fido mode does not
+automatically complete the partial input `/tmp/bar` to
+`/tmp/a/b/bar.txt`.
+
+To test how Ido mode can be useful, now uncomment the `(ido-mode 1)`
+line in the Emacs initialization file, save the file, and restart
+Emacs, so that Ido mode is enabled again. Now type `C-x C-f
+/tmp/a/b/foo.txt RET`. Then type `C-x C-f /tmp/bar`. Ido mode
+automatically completes the partial input `/tmp/bar` to
+`/tmp/a/b/bar.txt`. Once you are done experimenting like this,
+remember to uncomment the `(ido-everywhere)` line too in the end.
 
 
 ### Show Stray Whitespace
@@ -820,7 +867,7 @@ lines at the end of the file.
     file with `C-x C-s`.
 
 
-### Let Single Space After Period End Sentence
+### Single Space for Sentence Spacing
 
 Emacs uses the rather old-fashioned convention of treating a period
 followed by double spaces as end of sentence. However, it is more
@@ -1551,7 +1598,7 @@ Options][emacs-client-doc] for more details.
 [emacs-client-doc]: https://www.gnu.org/software/emacs/manual/html_node/emacs/emacsclient-Options.html
 
 
-## Emacs Launcher
+### Emacs Launcher
 
 In the previous section, we saw how our Emacs initialization file
 ensures that an Emacs server is started when we run `emacs` for the
