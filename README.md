@@ -807,29 +807,28 @@ lines at the end of the file.
     spaces can be removed with the key sequence `M-x
     delete-trailing-whitespace RET`.
 
-  - Show non-existent lines with a special glyph in the left fringe:
+  - Show the end of buffer with a special glyph in the left fringe:
 
     ```elisp
     (setq-default indicate-empty-lines t)
     ```
 
-    Showing non-existent lines in a conspicuous manner like this can
-    be helpful to spot any unnecessary empty lines at the end of a
-    buffer. An empty line is one that does not contain any character
-    except the terminating newline itself. Here is a screenshot that
-    demonstrates this feature:
+    Showing the end of the buffer conspicuously can be helpful to spot
+    any unnecessary blank lines at the end of a buffer. A blank line
+    is one that does not contain any character except the terminating
+    newline itself. Here is a screenshot that demonstrates this
+    feature:
 
     <!-- lorem2 -->
     <a href="https://i.imgur.com/WzystxA.png"><img alt="Non-existent line indicators"
         src="https://i.imgur.com/WzystxA.png" width="580"></a>
 
-    The screenshot shows that there are two empty lines at the end of
-    the buffer. The tiny horizontal dashes at the bottom of the left
-    fringe are non-existent lines. The first of these tiny dashes mark
-    the end of the buffer. Note: This is similar to how Vim displays
-    the tilde symbol (`~`) to show non-existent lines. The empty lines
-    at the end of a buffer can be removed with the key sequence `M-x
-    delete-trailing-whitespace RET`.
+    The screenshot shows that there are two blank lines just before
+    the end of the buffer. The tiny horizontal dashes on the left
+    fringe mark the end of the buffer. Note: This is similar to how
+    Vim displays the tilde symbol (`~`) to show the end of the buffer.
+    The trailing blank lines at the end of a buffer can be removed
+    with the key sequence `M-x delete-trailing-whitespace RET`.
 
   - Show buffer boundaries in the left fringe:
 
