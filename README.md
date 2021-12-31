@@ -1263,6 +1263,28 @@ Emacs packages we need:
     Note that this line of code must occur before the
     `package-install` call.
 
+  - Emacs does not load the custom-file automatically, so we add the
+    following code to load it:
+
+    ```elisp
+    (load custom-file t)
+    ```
+
+    It is important to load the custom-file because it may contain
+    customizations we have written to it directly or via the customize
+    interface (say, using `M-x customize RET`). If we don't load this
+    file, then any customizations written to this file will not become
+    available in our Emacs environment.
+
+    The boolean argument `t` ensures that no error occurs when the
+    custom-file is missing. Without it, when Emacs starts for the
+    first time with our initialization file and there is no
+    custom-file yet, the following error occurs: `File is missing:
+    Cannot open load file, No such file or directory,
+    ~/.emacs.d/custom.el`. Setting the second argument to `t` prevents
+    this error when Emacs is run with our initialization file for the
+    first time.
+
   - This is necessary for defining the `package-archives` list we will
     use in the next point.
 

@@ -64,7 +64,7 @@
 
 ;; Write customizations to a separate file instead of this file.
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-(load custom-file 'noerror)
+(load custom-file t)
 
 ;; Enable installation of packages from MELPA.
 (require 'package)
