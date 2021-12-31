@@ -35,4 +35,4 @@ Release Checklist
 
         git commit -em "Set version to $VER"
         git tag $VER -m "Emfy $VER"
-        git push origin master $VER
+        git push origin main $VER
