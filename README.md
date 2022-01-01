@@ -128,6 +128,7 @@ following features:
     matches, and comments with different shades of orange.
   - Enable and configure Ido mode to find files and switch buffers
     efficiently.
+  - Enable Fido mode for automatic completion of minibuffer input.
   - Show trailing whitespace at the end of lines clearly.
   - Show trailing newlines at the end of buffer clearly.
   - Show missing newlines at the end of buffer clearly.
