@@ -146,7 +146,7 @@ following features:
   - Install and configure Rainbow Delimiters to color parentheses by
     their nesting depth level.
   - Provide a minimal example of a user-defined custom command and a
-    custom key sequence.
+    few custom key sequences.
   - Start Emacs server automatically, so that terminal users can use
     Emacs client to edit files with an existing instance of Emacs.
 
@@ -1532,6 +1532,18 @@ In this section we will see how to make our own custom command.
     ```
 
     Now the same command can be invoked by typing `C-c t`.
+
+  - Create another custom key sequence to delete trailing whitespace
+    using the `delete-trailing-whitespace` introduced in the [Show
+    Stray Whitespace](#show-stray-whitespace) section:
+
+    ```elisp
+    (global-set-key (kbd "C-c d") 'delete-trailing-whitespace)
+    ```
+
+    Note that the custom key sequence in this point and the previous
+    one only serve as examples. You should define key sequences based
+    on your needs that you find more convenient.
 
 
 ### Emacs Server

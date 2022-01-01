@@ -4,6 +4,7 @@
 ### Added
 
 - Enable `fido-mode`.
+- Custom key sequence to delete trailing whitespace.
 
 
 0.1.0 (2021-12-31)

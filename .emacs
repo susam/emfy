@@ -109,8 +109,9 @@
   (interactive)
   (message (current-time-string)))
 
-;; Custom key-binding.
+;; Custom key sequences.
 (global-set-key (kbd "C-c t") 'show-current-time)
+(global-set-key (kbd "C-c d") 'delete-trailing-whitespace)
 
 ;; Start server.
 (require 'server)
