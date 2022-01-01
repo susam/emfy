@@ -26,7 +26,7 @@ environment is going to look after setting up this project:
 
 [![Screenshot of Emacs][demo-screenshot]][demo-screenshot]
 
-[demo-screenshot]: https://i.imgur.com/Bp562nt.png
+[demo-screenshot]: https://i.imgur.com/gBc2DYk.png
 
 If you are already comfortable with Emacs and only want to understand
 the content of [`.emacs`] or [`em`], you can skip ahead directly to
