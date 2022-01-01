@@ -7,6 +7,11 @@
 - Custom key sequence to delete trailing whitespace.
 
 
+### Fixed
+
+- Load custom-file.
+
+
 0.1.0 (2021-12-31)
 ------------------
 
