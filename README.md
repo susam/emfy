@@ -26,7 +26,7 @@ environment is going to look after setting up this project:
 
 [![Screenshot of Emacs][demo-screenshot]][demo-screenshot]
 
-[demo-screenshot]: https://i.imgur.com/gBc2DYk.png
+[demo-screenshot]: https://i.imgur.com/5TPWniw.png
 
 If you are already comfortable with Emacs and only want to understand
 the content of [`.emacs`] or [`em`], you can skip ahead directly to
@@ -618,8 +618,9 @@ choose another theme, or skip this section.
 
     By default the Wombat theme looks like this:
 
-    <a href="https://i.imgur.com/uRBoXCl.png"><img alt="Screenshot of Wombat default theme"
-        src="https://i.imgur.com/uRBoXCl.png" width="580"></a>
+    <!-- wombat-default -->
+    <a href="https://i.imgur.com/kCc4mQZ.png"><img alt="Screenshot of Wombat default theme"
+        src="https://i.imgur.com/kCc4mQZ.png" width="580"></a>
 
     In this theme, the cursor, search matches, and comments can often
     be difficult to spot because they are all colored with different
@@ -629,8 +630,9 @@ choose another theme, or skip this section.
     orange. In the end, our customized Wombat theme would look like
     this:
 
-    <a href="https://i.imgur.com/8GHqcHi.png"><img alt="Screenshot of Wombat custom theme"
-        src="https://i.imgur.com/8GHqcHi.png" width="580"></a>
+    <!-- wombat-custom -->
+    <a href="https://i.imgur.com/Ex3QOJe.png"><img alt="Screenshot of Wombat custom theme"
+        src="https://i.imgur.com/Ex3QOJe.png" width="580"></a>
 
   - Choose a darker shade of gray for the background color to improve
     the contrast of the theme:
@@ -799,8 +801,8 @@ lines at the end of the file.
     in the screenshot below:
 
     <!-- lorem1 -->
-    <a href="https://i.imgur.com/na53DuT.png"><img alt="Whitespace highlighted"
-        src="https://i.imgur.com/na53DuT.png" width="580"></a>
+    <a href="https://i.imgur.com/sonx2pp.png"><img alt="Whitespace highlighted"
+        src="https://i.imgur.com/sonx2pp.png" width="580"></a>
 
     The screenshot above shows one stray trailing space in the second
     line and two trailing spaces in the third line. These trailing
@@ -820,8 +822,8 @@ lines at the end of the file.
     feature:
 
     <!-- lorem2 -->
-    <a href="https://i.imgur.com/WzystxA.png"><img alt="Non-existent line indicators"
-        src="https://i.imgur.com/WzystxA.png" width="580"></a>
+    <a href="https://i.imgur.com/WNtaVkm.png"><img alt="Non-existent line indicators"
+        src="https://i.imgur.com/WNtaVkm.png" width="580"></a>
 
     The screenshot shows that there are two blank lines just before
     the end of the buffer. The tiny horizontal dashes on the left
@@ -843,8 +845,8 @@ lines at the end of the file.
     file that does not contain a terminating newline:
 
     <!-- lorem3 -->
-    <a href="https://i.imgur.com/M0nPPEg.png"><img alt="File without terminating newline"
-        src="https://i.imgur.com/M0nPPEg.png" width="580"></a>
+    <a href="https://i.imgur.com/dGjjT3Z.png"><img alt="File without terminating newline"
+        src="https://i.imgur.com/dGjjT3Z.png" width="580"></a>
 
     If there is only one line in the buffer and that line is
     terminated with a newline then a left-bracket (`[`) appears in the
@@ -854,8 +856,8 @@ lines at the end of the file.
     contains a terminating newline:
 
     <!-- lorem4 -->
-    <a href="https://i.imgur.com/KUQDpaJ.png"><img alt="File with terminating newline"
-        src="https://i.imgur.com/KUQDpaJ.png" width="580"></a>
+    <a href="https://i.imgur.com/1Ln4FbE.png"><img alt="File with terminating newline"
+        src="https://i.imgur.com/1Ln4FbE.png" width="580"></a>
 
     To summarize, these shapes (`[` or `⌞`) show where the last
     newline of the buffer exists. The last newline of the buffer

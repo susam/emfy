@@ -8,9 +8,11 @@ This directory contains some example files useful for taking
 screenshots used in the [README.md](../README.md) document of this
 project.
 
+Before taking screenshots `mv .git .bkp`.
+
 Use the following window dimensions while taking screenshots:
 
-- `example.el`, `example.md`: 150 x 32
+- `example.el`, `example.md`: 132 x 32
 - `lorem1.txt`: 80 x 12
 - `lorem2.txt`: 80 x 12
 - `lorem3.txt`: 80 x 12
