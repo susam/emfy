@@ -1,10 +1,10 @@
-0.2.0 (UNPUBLISHED)
--------------------
+0.2.0 (2022-01-02
+-----------------
 
 ### Added
 
 - Enable `fido-mode`.
-- Custom key sequence to delete trailing whitespace.
+- Custom key sequence `C-c d` to delete trailing whitespace.
 
 
 ### Fixed
