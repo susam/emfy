@@ -8,7 +8,7 @@
 (setq inhibit-startup-screen t)
 (column-number-mode)
 
-;; Theme.
+;; Dark theme.
 (load-theme 'wombat)
 (set-face-background 'default "#111")
 (set-face-background 'cursor "#c96")

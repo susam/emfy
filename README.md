@@ -47,7 +47,7 @@ Contents
   * [Execute Emacs Lisp Code](#execute-emacs-lisp-code)
   * [Use Rainbow Delimiters](#use-rainbow-delimiters)
 * [Line-by-Line Explanation](#line-by-line-explanation)
-  * [Tweak UI Elements](#tweak-ui-elements)
+  * [Tweak UI](#tweak-ui)
   * [Customize Theme](#customize-theme)
   * [Minibuffer Completion](#minibuffer-completion)
   * [Show Stray Whitespace](#show-stray-whitespace)
@@ -268,8 +268,8 @@ Step-by-Step Usage
 Emacs is a very powerful and extensible editor. It comes with over
 10,000 built-in commands. A small section like this can barely scratch
 the surface of Emacs. Yet, this section makes a modest attempt at
-getting you started with Emacs and then provides more resources to learn
-further. Perform the following steps to get started:
+getting you started with Emacs and then provides more resources to
+learn further. Perform the following steps to get started:
 
  1. Start Emacs:
 
@@ -365,11 +365,10 @@ memory.
 
 While you are getting used to the Emacs key bindings, keep this [GNU
 Emacs Reference Card][emacs-ref] handy. Also, if you are using it in
-GUI mode, then the menu options can be quite helpful. The menu options
-contain frequently used operations. The option for each operation also
-displays the key bindings that can be used to invoke the same
-operation. If you have hidden the menu bar, you can always invoke it
-by typing `<f10>`.
+GUI mode, then the menu options can be quite helpful. The Emacs
+initialization file that comes with this project hides the menu bar by
+default but you can always invoke the menu bar any time by typing
+`<f10>`.
 
 [emacs-ref]: https://www.gnu.org/software/emacs/refcards/pdf/refcard.pdf
 
@@ -507,8 +506,8 @@ will see how to execute some Elisp code.
 There is not much to learn about using Rainbow Delimiters. In the
 previous sections, you must have seen that as you type nested
 parentheses, each parenthesis is highlighted with a different color.
-That is done by Rainbow Delimiters. It colors each parenthesis according
-to its nesting depth level.
+That is done by Rainbow Delimiters. It colors each parenthesis
+according to its nesting depth level.
 
 Note: Not everyone likes Rainbow Delimiters. Some people find
 parentheses in multiple colors distracting. See the [Opinion
@@ -522,7 +521,7 @@ Line-by-Line Explanation
 This section explains the [`.emacs`] file provided here line-by-line.
 
 
-### Tweak UI Elements
+### Tweak UI
 
 The first few lines in our [`.emacs`] merely tweak the Emacs user
 interface. These are of course not essential for using Emacs. However,
@@ -548,11 +547,11 @@ Here is a line-by-line explanation of the UI tweaks in [`.emacs`]:
 
     Many users find the menu bar helpful because it helps in
     discovering new features. Even with the menu bar hidden with the
-    above line of Emacs Lisp code, the menu  can be accessed
-    anytime easily by typing `<f10>`. If you really want the menu bar
-    to be visible at all times, remove the above line of Emacs Lisp
-    code or just comment it out by inserting a semicolon (i.e., `;`)
-    before the opening parentheses.
+    above line of Emacs Lisp code, the menu can be accessed anytime
+    easily by typing `<f10>`. If you really want the menu bar to be
+    visible at all times, remove the above line of Emacs Lisp code or
+    just comment it out by inserting a semicolon (i.e., `;`) before
+    the opening parentheses.
 
   - Hide the tool bar and scroll bar:
 
@@ -996,11 +995,12 @@ tabs, for indenting code.
     another editor with a different `tab-width` setting. That's why we
     configure Emacs to use only spaces to indent and align code.
 
-    Now uncomment the function call to set `indent-tabs-mode` to `nil`
-    expected, save it, then restart Emacs, and then perform the above
-    experiment involving the three lines of Emacs Lisp code again.
-    This time, you should see that no tabs are used for indentation.
-    Only spaces are used for indentation.
+    Now to verify that the above line of Emacs Lisp code works as
+    expected, uncomment the function call to set `indent-tabs-mode` to
+    `nil`, save it, then restart Emacs, and then perform the
+    above experiment involving the three lines of Emacs Lisp code
+    again. This time, you should see that no tabs are used for
+    indentation. Only spaces are used for indentation.
 
     In some type of files, we must use literal tabs. For example, in
     `Makefile`, the syntax of target rules require that the commands
@@ -1013,8 +1013,8 @@ tabs, for indenting code.
     inadvertently uses tabs for alignment (as opposed to using tabs
     for indentation only which would be fine) and another programmer
     views the file with an editor with a different tab width setting.
-    In fact, in the experiment above, Emacs did use literal tab
-    characters to align code which would cause the code to look
+    In fact, in the experiment above, Emacs did use a literal tab
+    character to align code which would cause the code to look
     misaligned on another editor with a different tab width setting.
     See [Tabs Are Evil](https://www.emacswiki.org/emacs/TabsAreEvil)
     for more details on this topic.
@@ -1353,11 +1353,11 @@ Emacs packages we need:
     packages that you might need in future or remove packages that you
     do not want.
 
-    The first time Emacs starts with this initialization file, it takes
-    a while to install the packages we need. However, once the packages
-    are installed and Emacs is started again later, it starts instantly
-    because the code above takes care to not attempt installing packages
-    that are already installed.
+    The first time Emacs starts with this initialization file, it
+    takes a while to install the packages we need. However, once the
+    packages are installed and Emacs is started again later, it starts
+    instantly because the code above takes care to not attempt
+    installing packages that are already installed.
 
 
 ### Add Hooks
@@ -1368,8 +1368,8 @@ Lisp programmers find them useful while some do not.
 
 In case you decide not to use either Paredit or Rainbow Delimiters,
 then you may skip this section. In that case, you might also want to
-remove these packages from the `package-list` variable discussed in
-the previous section.
+remove these packages from the `dolist` variable discussed in the
+previous section.
 
   - Enable Paredit while editing Emacs Lisp code:
 
