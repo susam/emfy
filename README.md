@@ -935,7 +935,7 @@ space.
     expected, uncomment it again to enable it, save the file, then
     restart Emacs, and then perform the above experiment again. With
     `sentence-end-double-space` set to `nil`, typing `M-q` reformats
-    the paragrapha as follows:
+    the paragraphs as follows:
 
     ```
     Lorem ipsum dolor sit amet, consectetur adipiscing elit donec.
@@ -1004,7 +1004,7 @@ tabs, for indenting code.
 
     In some type of files, we must use literal tabs. For example, in
     `Makefile`, the syntax of target rules require that the commands
-    under a target are indented by a literal tab character. In such
+    under a target are indented by literal tab characters. In such
     files, Emacs is smart enough to always use literal tabs for
     indentation regardless of the above variable setting.
 
