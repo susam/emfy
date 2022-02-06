@@ -692,8 +692,9 @@ automatically completing inputs in all types of minibuffer prompts
 (even those not related to files and buffers).
 
 Strictly speaking, it is not necessary to enable Ido mode if we are
-going to enable Fido mode but both modes have their areas of strength,
-so we are going to enable both to get the best of both modes.
+going to enable Fido mode but both modes have their areas of
+strengths, so we are going to enable both to get the best of both
+modes.
 
   - Enable Ido mode:
 
@@ -1522,8 +1523,8 @@ In this section we will see how to make our own custom command.
     ```
 
     This command can be invoked by typing `M-x show-current-time RET`.
-    On running this command, the current time should be displayed in
-    the echo area for two seconds.
+    On running this command, the current time appears in the echo
+    area.
 
   - Create a custom key sequence to invoke the command defined in the
     previous point:
