@@ -1,5 +1,13 @@
-0.2.0 (2022-01-02
------------------
+0.3.0 (2022-05-21)
+------------------
+
+### Added
+
+- Always add a newline automatically at the end of a file while saving.
+
+
+0.2.0 (2022-01-02)
+------------------
 
 ### Added
 

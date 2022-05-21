@@ -1,4 +1,4 @@
-;;; Emfy 0.2.0 <https://github.com/susam/emfy>
+;;; Emfy 0.3.0-dev <https://github.com/susam/emfy>
 
 ;; Customize user interface.
 (menu-bar-mode 0)
@@ -28,6 +28,9 @@
 (setq-default show-trailing-whitespace t)
 (setq-default indicate-empty-lines t)
 (setq-default indicate-buffer-boundaries 'left)
+
+;; Add a newline automatically at the end of a file while saving.
+(setq-default require-final-newline t)
 
 ;; Consider a period followed by a single space to be end of sentence.
 (setq sentence-end-double-space nil)

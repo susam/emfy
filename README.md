@@ -51,6 +51,7 @@ Contents
   * [Customize Theme](#customize-theme)
   * [Minibuffer Completion](#minibuffer-completion)
   * [Show Stray Whitespace](#show-stray-whitespace)
+  * [Require Final Newline](#require-final-newline)
   * [Single Space for Sentence Spacing](#single-space-for-sentence-spacing)
   * [Indentation](#indentation)
   * [Keep Working Directory Tidy](#keep-working-directory-tidy)
@@ -132,6 +133,8 @@ following features:
   - Show trailing whitespace at the end of lines clearly.
   - Show trailing newlines at the end of buffer clearly.
   - Show missing newlines at the end of buffer clearly.
+  - Always add a newline automatically at the end of a file while
+    saving.
   - Use single spacing convention to end sentences.
   - Use spaces, not tabs, for indentation.
   - Configure indentation settings as per popular coding conventions.
@@ -863,10 +866,36 @@ lines at the end of the file.
     To summarize, these shapes (`[` or `⌞`) show where the last
     newline of the buffer exists. The last newline of the buffer
     exists above the lower horizontal bar of these shapes. No newlines
-    exist below the lower horizontal bar. It is a good practice to
-    terminate text files with a newline. For most types of files,
-    Emacs inserts a terminating newline automatically when we save the
-    file with `C-x C-s`.
+    exist below the lower horizontal bar.
+
+
+### Require Final Newline
+
+It is a good practice to terminate text files with a newline. For many
+types of files, such as files with extensions `.c`, `.el`, `.json`,
+`.lisp`, `.org`, `.py`, `.txt`, etc., Emacs inserts a terminating
+newline automatically when we save the file with `C-x C-s`. Emacs
+achieves by this ensuring that the major modes for these files set the
+variable `require-final-newline` to `t` by default. However, there are
+many other types of files, such as files with extensions `.ini`,
+`.yaml`, etc. for which Emacs does not insert a terminating newline
+automatically. We now see how to ensure that Emacs inserts a
+terminating newline for all types of files.
+
+  - Always add a newline automatically at the end of a file while
+    saving:
+
+    ```elisp
+    (setq-default require-final-newline t)
+    ```
+
+Many tools on Unix and Linux systems expect text files to be
+terminated with a newline. For example, in a crontab entry, if the
+final line is not followed by a terminating newline, it is ignored.
+Similarly, `wc -l` does not count the final line if it is not followed
+by a terminating newline. That is why, we in the above step we
+configure Emacs to ensure that it always insert a terminating newline
+before saving a file.
 
 
 ### Single Space for Sentence Spacing
