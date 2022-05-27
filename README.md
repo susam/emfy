@@ -93,26 +93,14 @@ this document. You are encouraged to read the line-by-line explanation
 that comes later in this document, understand each customization, and
 modify the initialization file to suit your needs.
 
-
-What About Programming in CL?
------------------------------
-
-This section is a little note for aspiring Common Lisp (CL)
-programmers. If you do not care about Common Lisp programming, ignore
-this section.
-
-For those who wish to use Emacs specifically for programming in CL,
-please see [Emacs4CL](https://github.com/susam/emacs4cl). Emacs4CL is
-similar to this project, however, Emacs4CL focusses primarily on
-setting up a CL development environment with Emacs, SBCL, and SLIME,
-as quickly as possible. This project, on the other hand, focusses only
-on setting up a general purpose editing and programming environment.
-
-Once you have set up your CL development environment using Emacs4CL,
-you can then come back to this project and pick more ideas and Emacs
-Lisp code to enhance your Emacs setup from being a CL development
-environment to being a more general purpose editing and programming
-environment.
+Note: If you want to use Emacs specifically for programming in Common
+Lisp, please see [Emacs4CL](https://github.com/susam/emacs4cl) first
+to quickly set up a Common Lisp (CL) development environment using
+Emacs. Once you have set up your CL development environment using
+Emacs4CL, you can then come back to this project and pick more ideas
+and Emacs Lisp code to enhance your Emacs setup from being a CL
+development environment to being a more general purpose editing and
+programming environment.
 
 
 Features
