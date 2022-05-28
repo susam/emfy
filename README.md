@@ -38,7 +38,6 @@ Contents
 --------
 
 * [Who Is This For?](#who-is-this-for)
-* [What About Programming in CL?](#what-about-programming-in-cl)
 * [Features](#features)
 * [Get Started](#get-started)
 * [Step-by-Step Usage](#step-by-step-usage)
