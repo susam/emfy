@@ -1003,21 +1003,37 @@ tabs, for indenting code.
     dot (`·`) and each tab with a right pointing guillemet (`»`). With
     whitespace mode enabled, you should find that the second line of
     code is indented with two spaces but the third line is indented
-    with a single tab followed by two spaces. Emacs has a `tab-width`
-    variable that is set to `8` by default. For every `tab-width`
-    columns of indentation, Emacs inserts a tab to indent the code.
-    The third line requires 10 leading spaces for alignment, so Emacs
-    inserts one tab character followed by 2 spaces to make the third
-    line look aligned. However, this code would look misaligned on
-    another editor with a different `tab-width` setting. That's why we
-    configure Emacs to use only spaces to indent and align code.
+    with a single tab followed by two spaces. The buffer should look
+    like this:
+
+    ```elisp
+    (defun·foo·()$
+    ··(concat·"foo"$
+    »       ··"bar"))
+    ```
+
+    Emacs has a `tab-width` variable that is set to `8` by default.
+    For every `tab-width` columns of indentation, Emacs inserts a tab
+    to indent the code. The third line requires 10 leading spaces for
+    alignment, so Emacs inserts one tab character followed by two
+    spaces to make the third line look aligned. However, this code
+    would look misaligned on another editor with a different
+    `tab-width` setting. That's why we configure Emacs to use only
+    spaces to indent and align code.
 
     Now to verify that the above line of Emacs Lisp code works as
     expected, uncomment the function call to set `indent-tabs-mode` to
-    `nil`, save it, then restart Emacs, and then perform the
-    above experiment involving the three lines of Emacs Lisp code
-    again. This time, you should see that no tabs are used for
-    indentation. Only spaces are used for indentation.
+    `nil`, save it, then restart Emacs, and then perform the above
+    experiment involving the three lines of Emacs Lisp code again.
+    This time, you should see that no tabs are used for indentation.
+    Only spaces are used for indentation. Typing `M-x whitespace-mode
+    RET` would display this in the buffer:
+
+    ```elisp
+    (defun·foo·()$
+    ··(concat·"foo"$
+    ··········"bar"))
+    ```
 
     In some type of files, we must use literal tabs. For example, in
     `Makefile`, the syntax of target rules require that the commands
