@@ -45,6 +45,7 @@ Contents
   * [Use Paredit](#use-paredit)
   * [Execute Emacs Lisp Code](#execute-emacs-lisp-code)
   * [Use Rainbow Delimiters](#use-rainbow-delimiters)
+* [Useful Terms](#useful-terms)
 * [Line-by-Line Explanation](#line-by-line-explanation)
   * [Tweak UI](#tweak-ui)
   * [Customize Theme](#customize-theme)
@@ -173,7 +174,7 @@ result looks like. Perform the following steps to get started:
     On Debian, Ubuntu, or another Debian-based Linux system, enter the
     following command:
 
-    ```
+    ```sh
     sudo apt-get install emacs
     ```
 
@@ -408,11 +409,11 @@ following steps to get started with Paredit:
                      -
     ```
 
-    Of course, there was no need to type the closing parenthesis because
-    it was already present but typing it out to skip over it is more
-    efficient than then moving over it with movement commands. This is,
-    in fact, a very nifty feature of Paredit. We can enter code with the
-    same keystrokes as we would without Paredit.
+    Of course, there was no need to type the closing parenthesis
+    because it was already present but typing it out to skip over it
+    is more efficient than moving over it with movement commands. This
+    is, in fact, a very nifty feature of Paredit. We can enter code
+    with the same keystrokes as we would without Paredit.
 
  5. Now type <code>enter</code> to create a new line just before the
     last parenthesis. A newline is inserted like this:
@@ -505,6 +506,59 @@ References](#opinion-references) section for more discussion on this
 topic.
 
 
+Useful Terms
+------------
+
+In this section, we clearly state the various terms that we use later
+in this document.
+
+  - *Frame*: The Emacs manual uses the term frame to mean a GUI
+    window, or a region of the desktop, or the terminal where Emacs is
+    displayed. We do not call it window in Emacs parlance because the
+    term "window" is reserved for another element discussed further
+    below in this list.
+
+  - *Menu bar*: An Emacs frame displays a menu bar at the very top. It
+    allows access to commands via a series of menus.
+
+  - *Echo area*: An Emacs frame displays an echo area at the very
+    bottom. The echo area displays informative messages.
+
+  - *Minibuffer*: The echo area is also used to display the
+    minibuffer, a special buffer where we can type and enter arguments
+    to commands, such as the name of a file to be edited after typing
+    the key sequence `C-x C-f`.
+
+  - *Tool bar*: On a graphical display, a tool bar is displayed
+    directly below the menu bar. The tool bar contains a row of icons
+    that provides quick access to several editing commands.
+
+  - *Window*: The main area of the frame between the menu bar or the
+    tool bar (if it exists) and the echo area contains one or more
+    windows. This is where we view or edit files. Each window displays
+    a *buffer*, i.e., the text or graphics we are editing or viewing.
+    By default, only one window is displayed when we start Emacs. We
+    can then split this main area into multiple windows using key
+    sequences like `C-x 2`, `C-x 3`, etc. and then open different
+    files or buffers in different windows.
+
+  - *Mode line*: The last line of each window is a mode line. It
+    displays information about the buffer. For example, it shows the
+    name of the buffer, the line number at which the cursor is
+    currently present, etc.
+
+  - *Scroll bar*: On a graphicaly display, a scroll bar is displayed
+    on one side which can be used to scroll through the buffer.
+
+There are many other peculiar terms found in the world of Emacs such
+as the term *point* to refer to the current location of the cursor,
+the term *kill* to cut text, the term *yank* to paste text, etc. but
+we will not discuss them here for the sake of brevity. The meanings of
+most such terms become obvious from the context when you encounter
+them. The terms described above should be sufficient to understand the
+line-by-line explanation presented in the next section.
+
+
 Line-by-Line Explanation
 ------------------------
 
@@ -530,10 +584,6 @@ Here is a line-by-line explanation of the UI tweaks in [`.emacs`]:
     When Emacs runs in a GUI window, by default, it starts with a menu
     bar, tool bar, and scroll bar. Many (but not all) users like to
     hide them in order to make the Emacs frame look clean and minimal.
-    Note that in Emacs, the term *frame* refers to the GUI window or
-    the region of the desktop where Emacs is displayed. In Emacs, the
-    term *window* refers to what we usually call split panes these
-    days.
 
     Many users find the menu bar helpful because it helps in
     discovering new features. Even with the menu bar hidden with the
@@ -581,7 +631,7 @@ Here is a line-by-line explanation of the UI tweaks in [`.emacs`]:
 
     By default, Emacs shows only the current line number in the mode
     line. For example, by default, Emacs may display something like
-    `L4` in the modeline to indicate that the cursor is on the fourth
+    `L4` in the mode line to indicate that the cursor is on the fourth
     line of the buffer. The above Elisp code enables column number
     display in the mode line. With column number enabled, Emacs may
     display something like `(4,0)` to indicate the cursor is at the
@@ -850,7 +900,7 @@ lines at the end of the file.
     <a href="https://i.imgur.com/1Ln4FbE.png"><img alt="File with terminating newline"
         src="https://i.imgur.com/1Ln4FbE.png" width="580"></a>
 
-    To summarize, these shapes (`[` or `⌞`) show where the last
+    To summarize, these shapes (`[`, `⌞`, or `⌝`) show where the last
     newline of the buffer exists. The last newline of the buffer
     exists above the lower horizontal bar of these shapes. No newlines
     exist below the lower horizontal bar.
@@ -880,9 +930,9 @@ Many tools on Unix and Linux systems expect text files to be
 terminated with a newline. For example, in a crontab entry, if the
 final line is not followed by a terminating newline, it is ignored.
 Similarly, `wc -l` does not count the final line if it is not followed
-by a terminating newline. That is why, we in the above step we
-configure Emacs to ensure that it always insert a terminating newline
-before saving a file.
+by a terminating newline. That is why, in the above step we configure
+Emacs to ensure that it always inserts a terminating newline before
+saving a file.
 
 
 ### Single Space for Sentence Spacing
@@ -1017,9 +1067,9 @@ tabs, for indenting code.
     to indent the code. The third line requires 10 leading spaces for
     alignment, so Emacs inserts one tab character followed by two
     spaces to make the third line look aligned. However, this code
-    would look misaligned on another editor with a different
-    `tab-width` setting. That's why we configure Emacs to use only
-    spaces to indent and align code.
+    would look misaligned with a different `tab-width` setting. That's
+    why we configure Emacs to use only spaces to indent and align
+    code.
 
     Now to verify that the above line of Emacs Lisp code works as
     expected, uncomment the function call to set `indent-tabs-mode` to
