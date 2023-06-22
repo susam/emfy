@@ -657,8 +657,9 @@ choose another theme, or skip this section.
     be difficult to spot because they are all colored with different
     shades of gray while the background is also gray. In the next few
     points, we will customize this theme a little to make these
-    elements easier to spot by coloring them with different shades of
-    orange. In the end, our customized Wombat theme would look like
+    elements easier to spot. We color them differently to add more
+    contrast between the background and foreground colors of these
+    elements. In the end, our customized Wombat theme would look like
     this:
 
     <!-- wombat-custom -->
@@ -684,8 +685,8 @@ choose another theme, or skip this section.
     foreground:
 
     ```elisp
-    (set-face-background 'isearch "#c60")
-    (set-face-foreground 'isearch "#eee")
+    (set-face-background 'isearch "#ff0")
+    (set-face-foreground 'isearch "#000")
     ```
 
   - Highlight search matches other than the current one with a darker
@@ -693,11 +694,11 @@ choose another theme, or skip this section.
     the foreground:
 
     ```elisp
-    (set-face-background 'lazy-highlight "#960")
-    (set-face-foreground 'lazy-highlight "#ccc")
+    (set-face-background 'lazy-highlight "#990")
+    (set-face-foreground 'lazy-highlight "#000")
     ```
 
-  - Use tangerine yellow to colour the comments:
+  - Use tangerine yellow to color the comments:
 
     ```elisp
     (set-face-foreground 'font-lock-comment-face "#fc0")
@@ -708,7 +709,7 @@ for comments in code. Such color themes intend to underemphasize the
 comments. I think comments play an important role in code meant to be
 read by humans and should be emphasized appropriately. That's why I
 have chosen tangerine yellow for comments in the last point above, so
-that the comments are easily noticeable.
+that the comments are easily readable.
 
 
 ### Minibuffer Completion

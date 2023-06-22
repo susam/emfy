@@ -9,6 +9,7 @@
 ### Changed
 
 - Leave menu bar enabled.
+- Increase contrast for isearch and lazy highlighting.
 
 
 0.2.0 (2022-01-02)
