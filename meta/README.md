@@ -1,40 +1,20 @@
 Meta
 ====
 
-Screenshots
------------
-
-This directory contains some example files useful for taking
-screenshots used in the [README.md](../README.md) document of this
-project.
-
-Before taking screenshots `mv .git .bkp`.
-
-Use the following window dimensions while taking screenshots:
-
-- `example.el`, `example.md`: 132 x 32
-- `lorem1.txt`: 80 x 12
-- `lorem2.txt`: 80 x 12
-- `lorem3.txt`: 80 x 12
-- `lorem4.txt`: 80 x 12
-
-
 Release Checklist
 -----------------
 
-  - Update version number in .emacs.
-  - Update year in LICENSE.md.
-  - Update CHANGES.md.
-  - Add new screenshots if necessary.
-  - Commit changes.
+- Update version number in .emacs.
+- Update year in LICENSE.md.
+- Update CHANGES.md.
+- Add new screenshots if necessary.
+- Tag the release.
 
-        git add -p
-        git commit
+  ```
+  VER=
 
-  - Tag the release.
-
-        VER=
-
-        git commit -em "Set version to $VER"
-        git tag $VER -m "Emfy $VER"
-        git push origin main $VER
+  git add -p
+  git commit -em "Set version to $VER"
+  git tag $VER -m "Emfy $VER"
+  git push origin main $VER
+  ```

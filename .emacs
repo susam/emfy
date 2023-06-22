@@ -1,4 +1,4 @@
-;;; Emfy 0.3.0-dev <https://github.com/susam/emfy>
+;;; Emfy 0.3.0 <https://github.com/susam/emfy>
 
 ;; Customize user interface.
 (when (display-graphic-p)
