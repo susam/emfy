@@ -1,4 +1,4 @@
-;;; Elisp Examples.
+;;; Elisp Examples.  -*- lexical-binding: t; -*-
 
 (defun hello-world ()
   "Show 'hello, world' message."
