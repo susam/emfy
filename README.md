@@ -216,8 +216,8 @@ result looks like. Perform the following steps to get started:
 
  3. Copy the Emacs launcher script [`em`] provided here to some
     directory that belongs to your `PATH` variable. For example, here
-    are a few commands that download this script and places it in
-    the `/usr/local/bin/` directory:
+    are a few commands that download this script and place it in the
+    `/usr/local/bin/` directory:
 
     ```sh
     curl -L https://github.com/susam/emfy/raw/main/em >> /tmp/em
@@ -575,25 +575,11 @@ indulges a little in customizing the user interface.
 
 Here is a line-by-line explanation of the UI tweaks in [`.emacs`]:
 
-  - Hide the menu bar:
-
-    ```elisp
-    (menu-bar-mode 0)
-    ```
-
-    When Emacs runs in a GUI window, by default, it starts with a menu
+  - When Emacs runs in a GUI window, by default, it starts with a menu
     bar, tool bar, and scroll bar. Many (but not all) users like to
     hide them in order to make the Emacs frame look clean and minimal.
-
-    Many users find the menu bar helpful because it helps in
-    discovering new features. Even with the menu bar hidden with the
-    above line of Emacs Lisp code, the menu can be accessed anytime
-    easily by typing `<f10>`. If you really want the menu bar to be
-    visible at all times, remove the above line of Emacs Lisp code or
-    just comment it out by inserting a semicolon (i.e., `;`) before
-    the opening parentheses.
-
-  - Hide the tool bar and scroll bar:
+    The following lines disable the tool bar and scroll bar. The menu
+    bar is left enabled.
 
     ```elisp
     (when (display-graphic-p)
@@ -606,11 +592,16 @@ Here is a line-by-line explanation of the UI tweaks in [`.emacs`]:
     `when` expression, we get the following error on Emacs without
     graphic display support: `Symbol's function definition is void:
     tool-bar-mode`. An example of Emacs without graphics support is
-    `emacs-nox` on Debian 10.
+    `emacs-nox` on Debian 10. Note that this is only an author's
+    preference. You may comment out one or more of these lines if you
+    want to retain the tool bar or scroll bar.
 
-    Note that this is only an author's preference. You may comment out
-    one or more of these lines if you want to retain the tool bar or
-    scroll bar.
+    Some users like to hide the menu bar as well. To disable the menu
+    bar, include `(menu-bar-mode 0)` as top-level-expression (i.e.,
+    outside the `when` expression) in the initialization file. Even
+    with the menu bar disabled, the menu can be accessed anytime by
+    typing `<f10>`. For beginners to Emacs, it is advisable to keep
+    the menu bar enabled because it helps in discovering new features.
 
   - Inhibit the startup screen with the `Welcome to GNU Emacs` message
     from appearing:
@@ -912,7 +903,7 @@ It is a good practice to terminate text files with a newline. For many
 types of files, such as files with extensions `.c`, `.el`, `.json`,
 `.lisp`, `.org`, `.py`, `.txt`, etc., Emacs inserts a terminating
 newline automatically when we save the file with `C-x C-s`. Emacs
-achieves by this ensuring that the major modes for these files set the
+achieves this by ensuring that the major modes for these files set the
 variable `require-final-newline` to `t` by default. However, there are
 many other types of files, such as files with extensions `.ini`,
 `.yaml`, etc. for which Emacs does not insert a terminating newline
@@ -975,8 +966,8 @@ space.
     expected, uncomment it again to enable it, save the file, restart
     Emacs, and then perform the above experiment again. With
     `sentence-end-double-space` set to `nil`, typing `M-e` moves the
-    cursor moves to the end of the of first sentence (i.e., after the
-    first period). This is what we normally expect these days.
+    cursor to the end of the of first sentence (i.e., after the first
+    period). This is what we normally expect these days.
 
     **Experiment B: Filling Paragraphs:** While writing text files, it
     is customary to limit the length of each line to a certain maximum

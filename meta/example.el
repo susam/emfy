@@ -1,4 +1,4 @@
-;;; Emacs Lisp Examples.
+;;; Emacs Lisp Examples.  -*- lexical-binding: t; -*-
 
 (defun hello-world ()
   "Show 'hello, world' message."

@@ -1,7 +1,6 @@
 ;;; Emfy 0.3.0-dev <https://github.com/susam/emfy>
 
 ;; Customize user interface.
-(menu-bar-mode 0)
 (when (display-graphic-p)
   (tool-bar-mode 0)
   (scroll-bar-mode 0))

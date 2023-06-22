@@ -6,6 +6,11 @@
 - Always add a newline automatically at the end of a file while saving.
 
 
+### Changed
+
+- Leave menu bar enabled.
+
+
 0.2.0 (2022-01-02)
 ------------------
 
