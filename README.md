@@ -24,7 +24,7 @@ explained in detail later in the [Emacs Server](#emacs-server) and
 [Emacs Launcher](#emacs-launcher) sections. Here is how the Emacs
 environment is going to look after setting up this project:
 
-[![Screenshot of Emacs][demo-img]][A screenshot of Emacs customized with Emfy]
+[![Screenshot of Emacs][demo-img]][demo-img]
 
 [demo-img]: https://susam.github.io/blob/img/emfy/emfy-0.3.0.png
 
