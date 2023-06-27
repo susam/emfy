@@ -7,13 +7,13 @@ get started with Emacs.
 
 [![View Source][Source SVG]][Source URL]
 [![MIT License][License SVG]][L]
-[![Twitter][Twitter SVG]][Twitter URL]
+[![Mastodon][Mastodon SVG]][Mastodon URL]
 
 [Source SVG]: https://img.shields.io/badge/view-~%2f.emacs-brightgreen
 [Source URL]: .emacs
 [License SVG]: https://img.shields.io/badge/license-MIT-%233ea639
-[Twitter SVG]: https://img.shields.io/badge/twitter-%40susam-%231da1f2
-[Twitter URL]: https://twitter.com/susam
+[Mastodon SVG]: https://img.shields.io/badge/mastodon-%40susam-%2355f
+[Mastodon URL]: https://mastodon.social/@susam
 [`.emacs`]: .emacs
 [`em`]: em
 
@@ -1827,7 +1827,7 @@ The following channels are available for asking questions, seeking
 help and receiving updates regarding this project:
 
 - GitHub: [emfy/issues](http://github.com/susam/emfy/issues)
-- Twitter: [@susam](https://twitter.com/susam)
+- Mastodon: [@susam@mastodon.social](https://mastodon.social/@susam)
 - Matrix: [#susam:matrix.org](https://matrix.to/#/#susam:matrix.org)
 - Libera: [#susam](https://web.libera.chat/#susam)
 
