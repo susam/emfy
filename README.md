@@ -356,10 +356,7 @@ memory.
 
 While you are getting used to the Emacs key bindings, keep this [GNU
 Emacs Reference Card][emacs-ref] handy. Also, if you are using it in
-GUI mode, then the menu options can be quite helpful. The Emacs
-initialization file that comes with this project hides the menu bar by
-default but you can always invoke the menu bar any time by typing
-`<f10>`.
+GUI mode, then the menu options can be quite helpful.
 
 [emacs-ref]: https://www.gnu.org/software/emacs/refcards/pdf/refcard.pdf
 
@@ -377,7 +374,7 @@ following steps to get started with Paredit:
     emacs
     ```
 
- 2. Open an Elisp source file:
+ 2. Open an Emacs Lisp source file:
 
     ```
     C-x C-f foo.el
@@ -453,9 +450,9 @@ more discussion on this topic.
 
 ### Execute Emacs Lisp Code
 
-The previous section shows how to write some Elisp code and how
+The previous section shows how to write some Emacs Lisp code and how
 Paredit helps in keeping the parentheses balanced. In this section, we
-will see how to execute some Elisp code.
+will see how to execute some Emacs Lisp code.
 
  1. Run Emacs:
 
@@ -463,7 +460,7 @@ will see how to execute some Elisp code.
     emacs
     ```
 
- 2. Open an Elisp source file:
+ 2. Open an Emacs Lisp source file:
 
     ```
     C-x C-f foo.el
@@ -481,7 +478,7 @@ will see how to execute some Elisp code.
     the echo area at the bottom. This confirms that the function has
     been defined.
 
- 5. Now add the following code to the Elisp source file:
+ 5. Now add the following code to the Emacs Lisp source file:
 
     ```elisp
     (square 5)
@@ -623,10 +620,10 @@ Here is a line-by-line explanation of the UI tweaks in [`.emacs`]:
     By default, Emacs shows only the current line number in the mode
     line. For example, by default, Emacs may display something like
     `L4` in the mode line to indicate that the cursor is on the fourth
-    line of the buffer. The above Elisp code enables column number
-    display in the mode line. With column number enabled, Emacs may
-    display something like `(4,0)` to indicate the cursor is at the
-    beginning of the fourth line.
+    line of the buffer. The above Emacs Lisp code enables column
+    number display in the mode line. With column number enabled, Emacs
+    may display something like `(4,0)` to indicate the cursor is at
+    the beginning of the fourth line.
 
 
 ### Customize Theme
@@ -946,7 +943,9 @@ followed by double spaces as end of sentence. However, it is more
 common these days to end sentences with a period followed by a single
 space.
 
-  - Let a period followed by a single space be treated as end of sentence:
+  - Let a sentence-terminating character (like a full stop, question
+    mark, etc.) followed by a single space be treated as end of
+    sentence:
 
     ```elisp
     (setq sentence-end-double-space nil)
@@ -970,17 +969,16 @@ space.
     beginning of the line. Finally, type `M-e` to move to the end of
     the sentence. Without `sentence-end-double-space` set to `nil`,
     typing `M-e` moves the cursor all the way to the end of the line
-    (i.e., after the second period). It ignores the first period as
-    end of sentence because this period is followed by one space
-    whereas Emacs expects two spaces after a period at the end of a
-    sentence.
+    (i.e., after the second full stop). It ignores the first full stop
+    as end of sentence because it is followed by one space whereas
+    Emacs expects two spaces at the end of a sentence.
 
     Now to verify that the above line of Emacs Lisp code works as
     expected, uncomment it again to enable it, save the file, restart
     Emacs, and then perform the above experiment again. With
     `sentence-end-double-space` set to `nil`, typing `M-e` moves the
     cursor to the end of the of first sentence (i.e., after the first
-    period). This is what we normally expect these days.
+    full stop). This is what we normally expect these days.
 
     **Experiment B: Filling Paragraphs:** While writing text files, it
     is customary to limit the length of each line to a certain maximum
@@ -1016,13 +1014,28 @@ space.
     We see that without `sentence-end-double-space` set to `nil`,
     Emacs refuses to insert a hard linebreak after the string
     `donec.`, so it moves the entire word to the next line. This is a
-    result of following the old-fashioned convention of recognizing a
-    period followed by double spaces as end of sentence. This
-    convention prevents inadvertently placing a hard linebreak within
-    an abbreviation. Since it is now more common to end a sentence
-    with a single period followed by a single space, we would like the
-    text above to be reformatted as shown in the last example above.
-    Setting `sentence-end-double-space` to `nil` achieves this.
+    result of following the old-fashioned convention of double spaces
+    at the end of a sentence. This convention prevents inadvertently
+    placing a hard linebreak within an abbreviation. Since it is now
+    more common to end a sentence with a single space, we would like
+    the text above to be reformatted as shown in the last example
+    above. Setting `sentence-end-double-space` to `nil` achieves this.
+
+While the step above explains how to configure Emacs to treat a period
+followed by a single space as the end of sentence, it is worth
+mentioning here that the number of spaces that must follow the end of
+a sentence is a very controversial matter. Many people prefer two
+spaces between sentences while many others prefer a single space
+instead. Section [Sentences][emacs-sentences-doc] of the Emacs manual
+recommends putting two spaces at the end of a sentence because it
+helps the Emacs commands that operate on sentences distinguish between
+dots that end a sentence and those that do not. Also, see the [Opinion
+References](#opinion-references) section for more discussion on this
+topic. In case, you want to follow the convention of two spaces at the
+end of a sentence, omit the above line of Emacs Lisp from your Emacs
+initialization file.
+
+[emacs-sentences-doc]: https://www.gnu.org/software/emacs/manual/html_node/emacs/Sentences.html
 
 
 ### Indentation
@@ -1714,7 +1727,7 @@ start the Emacs server again.
 It is worth noting here that there are other ways to start the Emacs
 server and to use the `emacsclient` command. See section [Using Emacs
 as a Server][emacs-server-doc] and section [`emacsclient`
-Options][emacs-client-doc] for more details.
+Options][emacs-client-doc] of the Emacs manual for more details.
 
 [emacs-server-doc]: https://www.gnu.org/software/emacs/manual/html_node/emacs/Emacs-Server.html
 [emacs-client-doc]: https://www.gnu.org/software/emacs/manual/html_node/emacs/emacsclient-Options.html
@@ -1814,10 +1827,14 @@ Opinion References
 - [Give paredit mode a chance][paredit-chance]
 - [Never warmed up to paredit][paredit-never-warmed]
 - [Coloring each paren differently only adds noise][rainbow-noise]
+- [The drawbacks of using single space between sentences][single-space-drawbacks]
+- [Why you should never, ever use two spaces after a period][space-invaders]
 
 [paredit-chance]: https://stackoverflow.com/a/5243421/303363
 [paredit-never-warmed]: https://lobste.rs/s/vgjknq/emacs_begin_learning_common_lisp#c_0y6zpd
 [rainbow-noise]: https://lobste.rs/s/vgjknq/emacs_begin_learning_common_lisp#c_1n78vl
+[single-space-drawbacks]: https://old.reddit.com/r/emacs/comments/p5zlr6/
+[space-invaders]: https://slate.com/technology/2011/01/two-spaces-after-a-period-why-you-should-never-ever-do-it.html
 
 
 Channels
