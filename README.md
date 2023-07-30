@@ -1,7 +1,7 @@
 Emacs for You (Emfy)
 ====================
 
-This project provides a tiny [`.emacs`] file to set up Emacs quickly.
+This project provides a tiny [`init.el`] file to set up Emacs quickly.
 This document provides a detailed description of how to set it up and
 get started with Emacs.
 
@@ -9,12 +9,12 @@ get started with Emacs.
 [![MIT License][License SVG]][L]
 [![Mastodon][Mastodon SVG]][Mastodon URL]
 
-[Source SVG]: https://img.shields.io/badge/view-~%2f.emacs-brightgreen
-[Source URL]: .emacs
+[Source SVG]: https://img.shields.io/badge/view-init.el-brightgreen
+[Source URL]: init.el
 [License SVG]: https://img.shields.io/badge/license-MIT-%233ea639
 [Mastodon SVG]: https://img.shields.io/badge/mastodon-%40susam-%2355f
 [Mastodon URL]: https://mastodon.social/@susam
-[`.emacs`]: .emacs
+[`init.el`]: init.el
 [`em`]: em
 
 Further this project also provides a tiny convenience command named
@@ -29,7 +29,7 @@ environment is going to look after setting up this project:
 [demo-img]: https://susam.github.io/blob/img/emfy/emfy-0.3.0.png
 
 If you are already comfortable with Emacs and only want to understand
-the content of [`.emacs`] or [`em`], you can skip ahead directly to
+the content of [`init.el`] or [`em`], you can skip ahead directly to
 the [Line-by-Line Explanation](#line-by-line-explanation) section that
 describes every line of these files in detail.
 
@@ -71,18 +71,18 @@ Who Is This For?
 ----------------
 
 Are you an absolute beginner to Emacs? Are you so new to Emacs that
-you do not even have `~/.emacs` or `~/.emacs.d` on your file system?
-Have you come across recommendations to use starter kits like Doom
-Emacs, Spacemacs, etc. but then you wondered if you could use vanilla
-Emacs and customize it slowly to suit your needs without having to
-sacrifice your productivity in the initial days of using Emacs? Do you
-also want your Emacs to look sleek from day zero? If you answered
-"yes" to most of these questions, then this project is for you.
+you do not even have `~/.emacs.d` on your file system? Have you come
+across recommendations to use starter kits like Doom Emacs, Spacemacs,
+etc. but then you wondered if you could use vanilla Emacs and
+customize it slowly to suit your needs without having to sacrifice
+your productivity in the initial days of using Emacs? Do you also want
+your Emacs to look sleek from day zero? If you answered "yes" to most
+of these questions, then this project is for you.
 
-The [`.emacs`] file in this project provides a quick way to get
+The [`init.el`] file in this project provides a quick way to get
 started with setting up your Emacs environment. This document explains
 how to do so in a step-by-step manner. This document also explains the
-content of [`.emacs`] and [`em`] in a line-by-line manner.
+content of [`init.el`] and [`em`] in a line-by-line manner.
 
 Note that many customizations in the Emacs initialization file
 available in this project are a result of the author's preferences.
@@ -106,7 +106,7 @@ programming environment.
 Features
 --------
 
-This project provides a file named [`.emacs`] that offers the
+This project provides a file named [`init.el`] that offers the
 following features:
 
   - Disable some UI elements to provide a clean and minimal
@@ -181,36 +181,27 @@ result looks like. Perform the following steps to get started:
     For other environments, visit https://www.gnu.org/software/emacs/
     to see how to install Emacs.
 
- 2. Copy the Emacs initialization file [`.emacs`] provided here to
-    your home directory. Here is an example `curl` command that copies
-    the initialization file to its traditional location:
-
-    ```sh
-    curl -L https://github.com/susam/emfy/raw/main/.emacs >> ~/.emacs
-    ```
-
-    Here is another alternative that copies the initialization file to
-    a more convenient location:
+ 2. Copy the Emacs initialization file [`init.el`] provided here to
+    your home directory. Here is an example `curl` command that does
+    this:
 
     ```sh
     mkdir ~/.emacs.d
-    curl -L https://github.com/susam/emfy/raw/main/.emacs >> ~/.emacs.d/init.el
+    curl -L https://github.com/susam/emfy/raw/main/init.el >> ~/.emacs.d/init.el
     ```
 
-    Yet another popular alternative is to copy the initialization file
-    to an XDG-compatible location as follows:
+    Here is another alternative that copies the initialization file to
+    an XDG-compatible location as follows:
 
     ```sh
     mkdir -p ~/.config/emacs
-    curl -L https://github.com/susam/emfy/raw/main/.emacs >> ~/.config/emacs/init.el
+    curl -L https://github.com/susam/emfy/raw/main/init.el >> ~/.config/emacs/init.el
     ```
 
     Emacs can automatically load the Emacs initialization file from
     any of the paths used above. See section [The Emacs Initialization
     File][emacs-init-doc] of the Emacs manual for more details about
-    this. Most users these days prefer one of the last two locations
-    because it allows all Emacs configuration to conveniently remain
-    in one directory.
+    this.
 
     [emacs-init-doc]: https://www.gnu.org/software/emacs/manual/html_node/emacs/Init-File.html
 
@@ -243,9 +234,9 @@ result looks like. Perform the following steps to get started:
     It may take a minute or so for Emacs to start the very first time.
     When it starts the first time with the new Emacs initialization
     file obtained in the previous step, it installs the packages
-    specified in it. This is only a one-time activity. The next time you
-    start Emacs, it will start instantly. We will see how [`.emacs`]
-    takes care of it in the line-by-line guide later.
+    specified in it. This is only a one-time activity. The next time
+    you start Emacs, it will start instantly. We will see how
+    [`init.el`] takes care of it in the line-by-line guide later.
 
 Now that your environment is setup, read the next section to learn how
 to use this environment in more detail.
@@ -559,18 +550,18 @@ line-by-line explanation presented in the next section.
 Line-by-Line Explanation
 ------------------------
 
-This section explains the [`.emacs`] file provided here line-by-line.
+This section explains the [`init.el`] file provided here line-by-line.
 
 
 ### Tweak UI
 
-The first few lines in our [`.emacs`] merely tweak the Emacs user
+The first few lines in our [`init.el`] merely tweak the Emacs user
 interface. These are of course not essential for using Emacs. However,
 many new Emacs users often ask how to customize the user interface to
 add a good color scheme and make it look minimal, so this section
 indulges a little in customizing the user interface.
 
-Here is a line-by-line explanation of the UI tweaks in [`.emacs`]:
+Here is a line-by-line explanation of the UI tweaks in [`init.el`]:
 
   - When Emacs runs in a GUI window, by default, it starts with a menu
     bar, tool bar, and scroll bar. Many (but not all) users like to
@@ -738,10 +729,11 @@ modes.
     Note that the positive argument `1` is necessary. Without it, this
     function call would simply toggle Ido mode on or off everytime it
     executes. Say, we reload the Emacs initialization file with `M-x
-    load-file RET ~/.emacs RET`, without the positive argument, this
-    function call would end up disabling Ido mode if it was previously
-    enabled. The positive argument ensures that Ido mode remains
-    enabled even if we reload the Emacs initialization file.
+    load-file RET ~/emacs.d/init.el RET`, without the positive
+    argument, this function call would end up disabling Ido mode if it
+    was previously enabled. The positive argument ensures that Ido
+    mode remains enabled even if we reload the Emacs initialization
+    file.
 
     With Ido mode enabled, automatic completions appear while trying
     to open files or switch between buffers with `C-x C-f` or `C-x b`,
@@ -1350,13 +1342,13 @@ Emacs packages we need:
 
   - When we install packages using `package-install` (coming up soon
     in a later point), a few customizations are written automatically
-    into the Emacs initialization file (`~/.emacs` in our case). This
-    has the rather undesirable effect of our carefully handcrafted
-    `~/.emacs` being meddled by `package-install`. To be precise, it
-    is the `custom` package invoked by `package-install` that intrudes
-    into our Emacs initialization file. To prevent that, we ask
-    `custom` to write the customizations to a separate file with the
-    following code:
+    into the Emacs initialization file (e.g., in
+    `~/.emacs.d/init.el`). This has the rather undesirable effect of
+    our carefully handcrafted `init.el` being meddled by
+    `package-install`. To be precise, it is the `custom` package
+    invoked by `package-install` that intrudes into our Emacs
+    initialization file. To prevent that, we ask `custom` to write the
+    customizations to a separate file with the following code:
 
     ```elisp
     (setq custom-file (concat user-emacs-directory "custom.el"))
@@ -1430,12 +1422,12 @@ Emacs packages we need:
     case you are curious. If the archive contents have not been
     fetched then the second line fetches them. Thus the second line
     executes only when the Emacs initialization is loaded for the
-    first time. The first time Emacs starts with the [.emacs](.emacs)
-    file of this repository, it takes a while to fetch the package
-    archives. However, once the package archives have been fetched and
-    Emacs is started again later, it starts instantly because the code
-    above takes care not to fetch package archives again when it is
-    already cached locally.
+    first time. The first time Emacs starts with the
+    [init.el](init.el) file of this repository, it takes a while to
+    fetch the package archives. However, once the package archives
+    have been fetched and Emacs is started again later, it starts
+    instantly because the code above takes care not to fetch package
+    archives again when it is already cached locally.
 
   - Install some packages:
 

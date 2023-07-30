@@ -4,7 +4,7 @@ Meta
 Release Checklist
 -----------------
 
-- Update version number in .emacs.
+- Update version number in init.el.
 - Update year in LICENSE.md.
 - Update CHANGES.md.
 - Add new screenshots if necessary.
