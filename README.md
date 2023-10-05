@@ -6,12 +6,10 @@ This document provides a detailed description of how to set it up and
 get started with Emacs.
 
 [![View Source][Source SVG]][Source URL]
-[![MIT License][License SVG]][L]
 [![Mastodon][Mastodon SVG]][Mastodon URL]
 
 [Source SVG]: https://img.shields.io/badge/view-init.el-brightgreen
 [Source URL]: init.el
-[License SVG]: https://img.shields.io/badge/license-MIT-%233ea639
 [Mastodon SVG]: https://img.shields.io/badge/mastodon-%40susam-%2355f
 [Mastodon URL]: https://mastodon.social/@susam
 [`init.el`]: init.el
@@ -114,7 +112,7 @@ following features:
   - Show current column number in the mode line.
   - Load a dark color theme named Wombat.
   - Customize the color theme to accentuate the cursor, search
-    matches, and comments with different shades of orange.
+    matches, and comments.
   - Enable and configure Ido mode to find files and switch buffers
     efficiently.
   - Enable Fido mode for automatic completion of minibuffer input.
@@ -672,9 +670,8 @@ choose another theme, or skip this section.
     (set-face-background 'cursor "#c96")
     ```
 
-  - Highlight the current search match with a certain shade of orange
-    as the background and a very light shade of gray as the
-    foreground:
+  - Highlight the current search match with bright yellow background
+    and dark foreground:
 
     ```elisp
     (set-face-background 'isearch "#ff0")
@@ -682,8 +679,7 @@ choose another theme, or skip this section.
     ```
 
   - Highlight search matches other than the current one with a darker
-    shade of orange as the background and a darker shade of gray as
-    the foreground:
+    shade of yellow as the background and dark foreground:
 
     ```elisp
     (set-face-background 'lazy-highlight "#990")
