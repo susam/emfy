@@ -1,3 +1,12 @@
+0.4.0 (UNRELEASED)
+------------------
+
+### Changed
+
+- Reduce `emacs-init-time` by approximately 40% by delaying package
+  loading until usage time.
+
+
 0.3.0 (2023-06-22)
 ------------------
 
