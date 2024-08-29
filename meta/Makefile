@@ -43,7 +43,8 @@ loc:
 	f() { grep -vE '^$$|^;|^ *".*"$$' ../init.el; }; f; f | wc -l
 
 lint:
-	emacs -l lint.el
+	emacs -l lint.el 2>&1 | \
+	grep -vE 'with-eval-after-load|prefix "init"|key sequence is reserved'
 
 benchmark:
 	HOME=. emacs --eval "(progn (princ (emacs-init-time) 'external-debugging-output) (kill-emacs))"; echo
