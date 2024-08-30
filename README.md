@@ -594,7 +594,7 @@ Here is a line-by-line explanation of the UI tweaks in [`init.el`]:
     from appearing:
 
     ```elisp
-    (setopt inhibit-startup-screen t)
+    (setq inhibit-startup-screen t)
     ```
 
     If you are a beginner to Emacs, you might find the startup screen
@@ -733,7 +733,7 @@ parentheses:
     parentheses.  The following line of code gets rid of this delay:
 
     ```elisp
-    (setopt show-paren-delay 0)
+    (setq show-paren-delay 0)
     ```
 
     This line of code must come before the one in the next point for
@@ -788,9 +788,9 @@ lines at the end of the file.
   - Highlight trailing whitespace at the end of lines:
 
     ```elisp
-    (add-hook 'conf-mode-hook (lambda () (setopt show-trailing-whitespace t)))
-    (add-hook 'prog-mode-hook (lambda () (setopt show-trailing-whitespace t)))
-    (add-hook 'text-mode-hook (lambda () (setopt show-trailing-whitespace t)))
+    (add-hook 'conf-mode-hook (lambda () (setq show-trailing-whitespace t)))
+    (add-hook 'prog-mode-hook (lambda () (setq show-trailing-whitespace t)))
+    (add-hook 'text-mode-hook (lambda () (setq show-trailing-whitespace t)))
     ```
 
     When the variable `show-trailing-whitespace` is set to `t`, any
@@ -834,7 +834,7 @@ lines at the end of the file.
   - Show the end of buffer with a special glyph in the left fringe:
 
     ```elisp
-    (setopt indicate-empty-lines t)
+    (setq-default indicate-empty-lines t)
     ```
 
     Showing the end of the buffer conspicuously can be helpful to spot
@@ -859,7 +859,7 @@ lines at the end of the file.
   - Show buffer boundaries in the left fringe:
 
     ```elisp
-    (setopt indicate-buffer-boundaries 'left)
+    (setq-default indicate-buffer-boundaries 'left)
     ```
 
     The buffer boundaries can be useful to check if the last line of
@@ -907,7 +907,7 @@ automatically.  We now  ensure that Emacs always inserts a
 terminating newline for all types of files with the following call:
 
 ```elisp
-(setopt require-final-newline t)
+(setq-default require-final-newline t)
 ```
 
 Many tools on Unix and Linux systems expect text files to be
@@ -939,7 +939,7 @@ a full stop, question mark, etc.) followed by a single space as end of
 sentence with the following code:
 
 ```elisp
-(setopt sentence-end-double-space nil)
+(setq sentence-end-double-space nil)
 ```
 
 This little setting has significant consequences while editing and
@@ -1038,7 +1038,7 @@ tabs, for indenting code.
   - Use spaces, not tabs, for indentation:
 
     ```elisp
-    (setopt indent-tabs-mode nil)
+    (setq-default indent-tabs-mode nil)
     ```
 
     Emacs uses a mix of tabs and spaces by default for indentation and
@@ -1115,7 +1115,7 @@ tabs, for indenting code.
     as wide as 4 characters:
 
     ```elisp
-    (setopt tab-width 4)
+    (setq-default tab-width 4)
     ```
 
     Note that this primarily affects how a literal tab character is
@@ -1145,9 +1145,9 @@ tabs, for indenting code.
     various languages:
 
     ```elisp
-    (setopt c-basic-offset 4)
-    (setopt js-indent-level 2)
-    (setopt css-indent-offset 2)
+    (setq c-basic-offset 4)
+    (setq js-indent-level 2)
+    (setq css-indent-offset 2)
     ```
 
     Emacs uses 2 spaces for indentation in C by default.  We change
@@ -1190,7 +1190,7 @@ these files at a different location.
   - Write auto-save files to a separate directory:
 
     ```elisp
-    (setopt auto-save-file-name-transforms '((".*" "~/.tmp/emacs/auto-save/" t)))
+    (setq auto-save-file-name-transforms '((".*" "~/.tmp/emacs/auto-save/" t)))
     ```
 
     If we open a new file or edit an existing file, say, `foo.txt` and
@@ -1212,7 +1212,7 @@ these files at a different location.
   - Write backup files to a separate directory:
 
     ```elisp
-    (setopt backup-directory-alist '(("." . "~/.tmp/emacs/backup/")))
+    (setq backup-directory-alist '(("." . "~/.tmp/emacs/backup/")))
     ```
 
     If we create a new file or edit an existing file, say, `foo.txt`,
@@ -1225,7 +1225,7 @@ these files at a different location.
   - Create backup files by copying our files, not moving our files:
 
     ```elisp
-    (setopt backup-by-copying t)
+    (setq backup-by-copying t)
     ```
 
     Everytime Emacs has to create a backup file, it moves our file to
@@ -1258,7 +1258,7 @@ these files at a different location.
   - Disable lockfiles:
 
     ```elisp
-    (setopt create-lockfiles nil)
+    (setq create-lockfiles nil)
     ```
 
     As soon as we make an edit to a file, say `foo.txt`, Emacs creates
@@ -1304,7 +1304,7 @@ these files at a different location.
     the customisations to a separate file with the following code:
 
     ```elisp
-    (setopt custom-file (concat user-emacs-directory "custom.el"))
+    (setq custom-file (concat user-emacs-directory "custom.el"))
     ```
 
   - Emacs does not load the custom-file automatically, so we add the

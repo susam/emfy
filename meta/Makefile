@@ -42,9 +42,12 @@ setup-full: setup-bare
 loc:
 	f() { grep -vE '^$$|^;|^ *".*"$$' ../init.el; }; f; f | wc -l
 
+_lint:
+	emacs -l lint.el 2>&1
+
 lint:
-	emacs -l lint.el 2>&1 | \
-	grep -vE 'with-eval-after-load|prefix "init"|key sequence is reserved'
+	make _lint 2>&1 | \
+	grep -vE 'with-eval-after-load|prefix "init"|key sequence is reserved|to free variable'
 
 benchmark:
 	HOME=. emacs --eval "(progn (princ (emacs-init-time) 'external-debugging-output) (kill-emacs))"; echo

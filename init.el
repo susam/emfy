@@ -14,7 +14,7 @@
 (when (display-graphic-p)
   (tool-bar-mode 0)
   (scroll-bar-mode 0))
-(setopt inhibit-startup-screen t)
+(setq inhibit-startup-screen t)
 (column-number-mode)
 
 ;; Dark theme.
@@ -29,7 +29,7 @@
   (set-face-foreground 'lazy-highlight "#000"))
 
 ;; Highlight matching pairs of parentheses.
-(setopt show-paren-delay 0)
+(setq show-paren-delay 0)
 (show-paren-mode)
 
 ;; Auto-complete inputs in the minibuffer.
@@ -39,47 +39,47 @@
 ;;; Whitespace =======================================================
 
 ;; Show trailing whitespace while writing config, code, or text.
-(add-hook 'conf-mode-hook (lambda () (setopt show-trailing-whitespace t)))
-(add-hook 'prog-mode-hook (lambda () (setopt show-trailing-whitespace t)))
-(add-hook 'text-mode-hook (lambda () (setopt show-trailing-whitespace t)))
+(add-hook 'conf-mode-hook (lambda () (setq show-trailing-whitespace t)))
+(add-hook 'prog-mode-hook (lambda () (setq show-trailing-whitespace t)))
+(add-hook 'text-mode-hook (lambda () (setq show-trailing-whitespace t)))
 
 ;; Show stray blank lines.
-(setopt indicate-empty-lines t)
-(setopt indicate-buffer-boundaries 'left)
+(setq-default indicate-empty-lines t)
+(setq-default indicate-buffer-boundaries 'left)
 
 ;; Add a newline automatically at the end of a file while saving.
-(setopt require-final-newline t)
+(setq-default require-final-newline t)
 
 ;; Consider a period followed by a single space to be end of sentence.
-(setopt sentence-end-double-space nil)
+(setq sentence-end-double-space nil)
 
 ;; Use spaces, not tabs, for indentation.
-(setopt indent-tabs-mode nil)
+(setq-default indent-tabs-mode nil)
 
 ;; Display the distance between two tab stops as 4 characters wide.
-(setopt tab-width 4)
+(setq-default tab-width 4)
 
 ;; Indentation setting for various languages.
-(setopt c-basic-offset 4)
-(setopt js-indent-level 2)
-(setopt css-indent-offset 2)
+(setq c-basic-offset 4)
+(setq js-indent-level 2)
+(setq css-indent-offset 2)
 
 
 ;;; Clean Working Directories ========================================
 
 ;; Write auto-saves and backups to separate directory.
 (make-directory "~/.tmp/emacs/auto-save/" t)
-(setopt auto-save-file-name-transforms '((".*" "~/.tmp/emacs/auto-save/" t)))
-(setopt backup-directory-alist '(("." . "~/.tmp/emacs/backup/")))
+(setq auto-save-file-name-transforms '((".*" "~/.tmp/emacs/auto-save/" t)))
+(setq backup-directory-alist '(("." . "~/.tmp/emacs/backup/")))
 
 ;; Do not move the current file while creating backup.
-(setopt backup-by-copying t)
+(setq backup-by-copying t)
 
 ;; Disable lockfiles.
-(setopt create-lockfiles nil)
+(setq create-lockfiles nil)
 
 ;; Write customizations to a separate file instead of this file.
-(setopt custom-file (expand-file-name "custom.el" user-emacs-directory))
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file t)
 
 
