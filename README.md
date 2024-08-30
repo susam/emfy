@@ -907,7 +907,7 @@ automatically.  We now  ensure that Emacs always inserts a
 terminating newline for all types of files with the following call:
 
 ```elisp
-(setq-default require-final-newline t)
+(setq require-final-newline t)
 ```
 
 Many tools on Unix and Linux systems expect text files to be

@@ -48,7 +48,7 @@
 (setq-default indicate-buffer-boundaries 'left)
 
 ;; Add a newline automatically at the end of a file while saving.
-(setq-default require-final-newline t)
+(setq require-final-newline t)
 
 ;; Consider a period followed by a single space to be end of sentence.
 (setq sentence-end-double-space nil)
