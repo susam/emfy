@@ -24,7 +24,7 @@ environment is going to look after setting up this project:
 
 [![Screenshot of Emacs][demo-img]][demo-img]
 
-[demo-img]: https://susam.github.io/blob/img/emfy/emfy-0.3.0.png
+[demo-img]: https://susam.github.io/blob/img/emfy/emfy-0.4.0.png
 
 If you are already comfortable with Emacs and only want to understand
 the content of [`init.el`] or [`em`], you can skip ahead directly to
@@ -639,8 +639,8 @@ choose another theme, or skip this section.
     By default the Wombat theme looks like this:
 
     <!-- wombat-default -->
-    <a href="https://susam.github.io/blob/img/emfy/emfy-0.3.0-wombat1.png"><img
-        src="https://susam.github.io/blob/img/emfy/emfy-0.3.0-wombat1.png"
+    <a href="https://susam.github.io/blob/img/emfy/emfy-0.4.0-wombat1.png"><img
+        src="https://susam.github.io/blob/img/emfy/emfy-0.4.0-wombat1.png"
         alt="Screenshot of Wombat default theme"
         width="580"></a>
 
@@ -654,8 +654,8 @@ choose another theme, or skip this section.
     this:
 
     <!-- wombat-custom -->
-    <a href="https://susam.github.io/blob/img/emfy/emfy-0.3.0-wombat2.png"><img
-        src="https://susam.github.io/blob/img/emfy/emfy-0.3.0-wombat2.png"
+    <a href="https://susam.github.io/blob/img/emfy/emfy-0.4.0-wombat2.png"><img
+        src="https://susam.github.io/blob/img/emfy/emfy-0.4.0-wombat2.png"
         alt="Screenshot of Wombat custom theme"
         width="580"></a>
 
@@ -829,8 +829,8 @@ lines at the end of the file.
     (usually with a red background) as shown in the screenshot below:
 
     <!-- lorem1 -->
-    <a href="https://susam.github.io/blob/img/emfy/emfy-0.3.0-lorem1.png"><img
-        src="https://susam.github.io/blob/img/emfy/emfy-0.3.0-lorem1.png"
+    <a href="https://susam.github.io/blob/img/emfy/emfy-0.4.0-lorem1.png"><img
+        src="https://susam.github.io/blob/img/emfy/emfy-0.4.0-lorem1.png"
         alt="Screenshot of whitespace highlighted in Emacs"
         width="580"></a>
 
@@ -852,8 +852,8 @@ lines at the end of the file.
     feature:
 
     <!-- lorem2 -->
-    <a href="https://susam.github.io/blob/img/emfy/emfy-0.3.0-lorem2.png"><img
-        src="https://susam.github.io/blob/img/emfy/emfy-0.3.0-lorem2.png"
+    <a href="https://susam.github.io/blob/img/emfy/emfy-0.4.0-lorem2.png"><img
+        src="https://susam.github.io/blob/img/emfy/emfy-0.4.0-lorem2.png"
         alt="Screenshot of non-existent line indicators"
         width="580"></a>
 
@@ -877,8 +877,8 @@ lines at the end of the file.
     a file that does not contain a terminating newline:
 
     <!-- lorem3 -->
-    <a href="https://susam.github.io/blob/img/emfy/emfy-0.3.0-lorem3.png"><img
-        src="https://susam.github.io/blob/img/emfy/emfy-0.3.0-lorem3.png"
+    <a href="https://susam.github.io/blob/img/emfy/emfy-0.4.0-lorem3.png"><img
+        src="https://susam.github.io/blob/img/emfy/emfy-0.4.0-lorem3.png"
         alt="Screenshot of a file without terminating newline"
         width="580"></a>
 
@@ -890,8 +890,8 @@ lines at the end of the file.
     contains a terminating newline:
 
     <!-- lorem4 -->
-    <a href="https://susam.github.io/blob/img/emfy/emfy-0.3.0-lorem4.png"><img
-        src="https://susam.github.io/blob/img/emfy/emfy-0.3.0-lorem4.png"
+    <a href="https://susam.github.io/blob/img/emfy/emfy-0.4.0-lorem4.png"><img
+        src="https://susam.github.io/blob/img/emfy/emfy-0.4.0-lorem4.png"
         alt="Screenshot of a file with terminating newline"
         width="580"></a>
 

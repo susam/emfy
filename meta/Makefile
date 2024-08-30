@@ -56,14 +56,14 @@ run:
 	HOME=. emacs
 
 demo:
-	HOME=. emacs --eval '(progn (set-frame-size (selected-frame) 132 32) (find-file "example.md") (split-window-right) (find-file "example.el") (goto-char (1- (point-max))) (message ""))'
+	HOME=. emacs --eval '(progn (set-frame-size (selected-frame) 140 32) (find-file "example.md") (split-window-right) (find-file "example.el") (goto-char (1- (point-max))) (message ""))'
 
 wombat1: setup-bare
 	sed -n '1,/load-theme/p' ../init.el > .emacs.d/init.el
 	HOME=. emacs --eval '(progn (set-frame-size (selected-frame) 80 12) (find-file "foo.el") (message ""))'
 
 wombat2: setup-bare
-	sed -n '1,/Highlight/p' ../init.el > .emacs.d/init.el
+	sed -n '1,/Enable line/p' ../init.el > .emacs.d/init.el
 	HOME=. emacs --eval '(progn (set-frame-size (selected-frame) 80 12) (find-file "foo.el") (message ""))'
 
 lorem1: setup-bare
