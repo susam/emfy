@@ -39,9 +39,8 @@
 ;;; Whitespace =======================================================
 
 ;; Show trailing whitespace while writing config, code, or text.
-(add-hook 'conf-mode-hook (lambda () (setq show-trailing-whitespace t)))
-(add-hook 'prog-mode-hook (lambda () (setq show-trailing-whitespace t)))
-(add-hook 'text-mode-hook (lambda () (setq show-trailing-whitespace t)))
+(dolist (hook '(conf-mode-hook prog-mode-hook text-mode-hook))
+  (add-hook hook (lambda () (setq show-trailing-whitespace t))))
 
 ;; Show stray blank lines.
 (setq-default indicate-empty-lines t)

@@ -64,6 +64,7 @@ Contents
 * [Opinion References](#opinion-references)
 * [Channels](#channels)
 * [License](#license)
+* [See Also](#see-also)
 
 
 Who Is This For?
@@ -563,10 +564,10 @@ this section indulges a little in customising the user interface.
 Here is a line-by-line explanation of the UI tweaks in [`init.el`]:
 
   - When Emacs runs in a GUI window, by default, it starts with a menu
-    bar, tool bar, and scroll bar.  Many (but not all) users like to
-    hide them in order to make the Emacs frame look clean and minimal.
-    The following lines disable the tool bar and scroll bar.  The menu
-    bar is left enabled.
+    bar, tool bar, and scroll bar.  Some users like to hide them in
+    order to make the Emacs frame look clean and minimal.  The
+    following lines disable the tool bar and scroll bar.  The menu bar
+    is left enabled.
 
     ```elisp
     (when (display-graphic-p)
@@ -785,12 +786,12 @@ While writing text files, it can often be useful to quickly spot any
 trailing whitespace at the end of lines or unnecessary trailing new
 lines at the end of the file.
 
-  - Highlight trailing whitespace at the end of lines:
+  - Highlight trailing whitespace at the end of lines in modes for
+    configuration, programming, and text with the following loop:
 
     ```elisp
-    (add-hook 'conf-mode-hook (lambda () (setq show-trailing-whitespace t)))
-    (add-hook 'prog-mode-hook (lambda () (setq show-trailing-whitespace t)))
-    (add-hook 'text-mode-hook (lambda () (setq show-trailing-whitespace t)))
+    (dolist (hook '(conf-mode-hook prog-mode-hook text-mode-hook))
+      (add-hook hook (lambda () (setq show-trailing-whitespace t))))
     ```
 
     When the variable `show-trailing-whitespace` is set to `t`, any
@@ -1877,3 +1878,11 @@ This software is provided "AS IS", WITHOUT WARRANTY OF ANY KIND,
 express or implied.  See [LICENSE.md][L] for details.
 
 [L]: LICENSE.md
+
+
+See Also
+--------
+
+* [Emacs4CL](https://github.com/susam/emacs4cl) - Tiny DIY kit to set up vanilla Emacs for Common Lisp programming
+
+* [Devil](https://github.com/susam/devil) - Emacs minor mode that intercepts and translates keystrokes to provide a modifier-free non-modal editing experience
