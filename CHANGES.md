@@ -1,6 +1,14 @@
 0.4.0 (UNRELEASED)
 ------------------
 
+### Added
+
+- Enable line numbers in modes pertaining to configuration,
+  programming, and text.
+- Prevent Paredit from altering the behaviour of `RET`.
+- Introduce `install-packages` command to install packages.
+
+
 ### Changed
 
 - Reduce `emacs-init-time` by approximately 40% by delaying package
@@ -11,11 +19,8 @@
   (requires Emacs 28.1 or later).
 - Enable `show-trailing-whitespace` only in modes pertaining to
   configuration, programming, and text.
-- Introduce `install-packages` command to install packages.
 - Use `fboundp` to check if a mode exists before adding hooks that
   enable that mode.
-- Prevent Paredit from altering the behaviour of `RET`.
-
 
 
 0.3.0 (2023-06-22)

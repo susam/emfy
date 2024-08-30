@@ -28,6 +28,10 @@
   (set-face-background 'lazy-highlight "#990")
   (set-face-foreground 'lazy-highlight "#000"))
 
+;; Enable line numbers while writing config, code, or text.
+(dolist (hook '(prog-mode-hook conf-mode-hook text-mode-hook))
+  (add-hook hook 'display-line-numbers-mode))
+
 ;; Highlight matching pairs of parentheses.
 (setq show-paren-delay 0)
 (show-paren-mode)

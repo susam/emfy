@@ -723,6 +723,36 @@ appropriately.  That's why I have chosen tangerine yellow for
 comments.  This makes the comments are easily readable.
 
 
+### Line Numbers
+
+Enable line numbers in modes for configuration, programming, and text
+with the following loop:
+
+```elisp
+(dolist (hook '(prog-mode-hook conf-mode-hook text-mode-hook))
+  (add-hook hook 'display-line-numbers-mode))
+```
+
+Every buffer has a *major mode* which determines the editing
+behaviour, syntax highlighting, etc. of the buffer.  The `add-hook`
+calls in the loop above ensure that `display-line-numbers-mode` is
+enabled automatically when certain major modes become active.  In
+particular, this ensures that line numbers are enabled while editing
+configuration files, program files, or text files.  For instance, when
+editing a C program (say with `C-x C-f foo.c RET`), the above hook
+enables line numbers for the buffer for the C program file.  This
+happens because while editing C program files, the major mode named
+`c-mode` is activated and `c-mode` is derived from `prog-mode`.
+
+The above loop also ensures that this feature *does not* get enabled
+while working with other types of buffers.  For example, if we start a
+terminal emulator with `M-x ansi-term RET`, this feature does not get
+enabled because the terminal emulator buffer has the major mode named
+`term-mode` which is not derived from any of the three modes mentioned
+above.  Displaying line numbers in such a mode can be distracting, so
+we keep line numbers disabled in such modes.
+
+
 ### Highlight Parentheses
 
 The following points describe how we enable highlighting of
@@ -808,29 +838,6 @@ lines at the end of the file.
     line and two trailing spaces in the third line.  These trailing
     spaces can be removed with the key sequence `M-x
     delete-trailing-whitespace RET`.
-
-    Every buffer has a *major mode* which determines the editing
-    behaviour, syntax highlighting, etc. of the buffer.  The
-    `add-hook` calls above ensure that `show-trailing-whitespace` is
-    set only when certain major modes are active.  This ensures that
-    trailing whitespace is highlighted while editing configuration
-    files, programs, or text.  For instance, when editing a C program
-    (say with `C-x C-f foo.c RET`), any trailing whitespace is
-    highlighted because while editing a C program file, the major mode
-    named `c-mode` is activated and `c-mode` is derived from
-    `prog-mode`.
-
-    The `add-hook` calls also ensure that this feature *does not* get
-    enabled while working with other types of buffers.  For example,
-    if we start a terminal emulator with `M-x ansi-term RET`, this
-    feature does not get enabled because the terminal emulator buffer
-    has the major mode named `term-mode` which is not derived from any
-    of the three modes mentioned above.  Some programs that we might
-    run in the terminal emulator could produce output that have
-    trailing whitespace, so enabling this feature in such a mode could
-    be distracting.  That is why the three lines of code above
-    carefully enables the highlighting of trailing whitespace in
-    buffers of specific types only.
 
   - Show the end of buffer with a special glyph in the left fringe:
 
