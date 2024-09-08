@@ -21,6 +21,7 @@
   configuration, programming, and text.
 - Use `fboundp` to check if a mode exists before adding hooks that
   enable that mode.
+- Use `dolist` loops to eliminate repetitive `add-hook` calls.
 
 
 0.3.0 (2023-06-22)

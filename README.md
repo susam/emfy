@@ -57,8 +57,8 @@ Contents
   * [Custom Command and Key Sequences](#custom-command-and-key-sequences)
   * [Emacs Server](#emacs-server)
   * [Install Packages](#install-packages)
-  * [Paredit Configuration](#paredit-configuration)
-  * [Rainbow Delimiters Configuration](#rainbow-delimiters-configuration)
+  * [Configure Paredit](#configure-paredit)
+  * [Configure Rainbow Delimiters](#configure-rainbow-delimiters)
   * [End of File](#end-of-file)
   * [Emacs Launcher](#emacs-launcher)
 * [Opinion References](#opinion-references)
@@ -403,8 +403,8 @@ Perform the following steps to get started with Paredit:
     This is, in fact, a very nifty feature of Paredit.  We can enter
     code with the same keystrokes as we would without Paredit.
 
- 5. Now type <kbd>enter</kbd> to insert a new line just before the
-    last parenthesis.  A newline is inserted like this:
+ 5. Now type <kbd>enter</kbd> to insert a newline just before the last
+    parenthesis.  A newline is inserted like this:
 
     ```elisp
     (defun square (x)
@@ -672,16 +672,17 @@ choose another theme, or skip this section.
     Since `wombat-theme` is already loaded here (due to the
     `load-theme` expression discussed earlier), the body is evaluated
     immediately.  However, if `wombat-theme` were not yet loaded, the
-    body would be evaluated as soon as `wombat-theme` is loaded.
+    body would be evaluated as soon as `wombat-theme` gets loaded.
 
-    The first line of the body shown above the background colour to
+    The first expression in the the body sets the background colour to
     `#111`, i.e., a very dark shade of grey.
 
     The name `wombat-theme` refers to the feature provided by the
     Wombat theme.  Emacs packages (including the ones for themes) can
     declare the feature they provide.  If we ever remove or comment
-    out the `load-theme` expression mentioned earlier, the body of
-    this `with-eval-after-load` expression will not be executed.
+    out the `load-theme` expression mentioned earlier, then the
+    `wombat-theme` feature will not be loaded and the body of the
+    `with-eval-after-load` expression will not be executed.
     Therefore, removing or commenting out the `load-theme` call is a
     convenient way to disable the theme along with all the additional
     color customizations made here.
@@ -734,15 +735,20 @@ with the following loop:
 ```
 
 Every buffer has a *major mode* which determines the editing
-behaviour, syntax highlighting, etc. of the buffer.  The `add-hook`
-calls in the loop above ensure that `display-line-numbers-mode` is
-enabled automatically when certain major modes become active.  In
-particular, this ensures that line numbers are enabled while editing
-configuration files, program files, or text files.  For instance, when
-editing a C program (say with `C-x C-f foo.c RET`), the above hook
-enables line numbers for the buffer for the C program file.  This
-happens because while editing C program files, the major mode named
-`c-mode` is activated and `c-mode` is derived from `prog-mode`.
+behaviour, syntax highlighting, etc. of the buffer.  To see the
+current major mode, type `M-: major-mode RET`.  The name of the
+current major mode is also always displayed in the mode line at the
+bottom.
+
+The `add-hook` calls in the loop above ensure that
+`display-line-numbers-mode` is enabled automatically when certain
+major modes become active.  In particular, this ensures that line
+numbers are enabled while editing configuration files, program files,
+or text files.  For instance, when editing a C program (say with `C-x
+C-f foo.c RET`), the above hook enables line numbers for the buffer
+for the C program file.  This happens because while editing C program
+files, the major mode named `c-mode` is activated and `c-mode` is
+derived from `prog-mode`.
 
 The above loop also ensures that this feature *does not* get enabled
 while working with other types of buffers.  For example, if we start a
@@ -814,7 +820,8 @@ partially and Fido will automatically find matches for it.
 
 While writing text files, it can often be useful to quickly spot any
 trailing whitespace at the end of lines or unnecessary trailing new
-lines at the end of the file.
+lines at the end of the file.  The next few points describe how we
+highlight stray whitespace and newlines.
 
   - Highlight trailing whitespace at the end of lines in modes for
     configuration, programming, and text with the following loop:
@@ -838,6 +845,11 @@ lines at the end of the file.
     line and two trailing spaces in the third line.  These trailing
     spaces can be removed with the key sequence `M-x
     delete-trailing-whitespace RET`.
+
+    Note that we enable this feature only for modes pertaining to
+    configuration, programming, and text.  It can be distracting to
+    see stray whitespace highlighted in other modes like `term-mode`,
+    `erc-mode`, etc.
 
   - Show the end of buffer with a special glyph in the left fringe:
 
@@ -1549,7 +1561,7 @@ this command installs the packages configured in the code discussed
 above and quits Emacs.
 
 
-### Paredit Configuration
+### Configure Paredit
 
 This section describes how to enable Paredit.  Paredit helps in
 keeping parentheses balanced and in performing structured editing of
@@ -1560,50 +1572,56 @@ In case you decide not to use Paredit, you may skip this section.  In
 that case, you might also want to remove this package from the
 `dolist` loop discussed in the previous section.
 
-  - Enable Paredit while editing Emacs Lisp code:
+We enable Paredit in various modes pertaining to Lisp programming with
+the following Emacs Lisp code:
 
-    ```elisp
-    (when (fboundp 'paredit-mode)
-      (add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
-    ```
+```elisp
+(when (fboundp 'paredit-mode)
+  (dolist (hook '(emacs-lisp-mode-hook
+                  eval-expression-minibuffer-setup-hook
+                  ielm-mode-hook
+                  lisp-interaction-mode-hook
+                  lisp-mode-hook))
+    (add-hook hook 'enable-paredit-mode)))
+```
 
-    The `when` expression checks if `paredit-mode` is available before
-    setting up hooks.  If `paredit-mode` is unavailable, then the
-    hooks are not set up.  The above code shows the first hook that is
-    set up if `paredit-mode` is found.  This hook ensures that
-    whenever `emacs-lisp-mode` gets activated, `paredit-mode` gets
-    enabled automatically.
+Here is an explanation of the above code:
+
+  - The `when` expression checks if `paredit-mode` is available before
+    setting up hooks to enable it in various modes.  If it is
+    unavailable, then the hooks are not set up.
+
+  - The `dolist` expression iterates over hooks for various modes
+    where we want Paredit to be enabled.  In each iteration, the
+    `add-hook` expression adds the function `enable-paredit-mode` to
+    each mode's hook.  This ensures that whenever one of these modes
+    gets activated, `enable-paredit-mode` is called thereby enabling
+    Paredit in that mode.
+
+  - Adding `enable-paredit-mode` to `emacs-lisp-mode-hook` enables
+    Paredit while editing Emacs Lisp code.
 
     To test that Paredit is enabled while editing Emacs Lisp code,
     open a new Emacs Lisp file, say, `foo.el`.  Then type `(`.
     Paredit should automatically insert the corresponding `)`.
 
-  - Enable Paredit in eval-expression minibuffer:
-
-    ```elisp
-      (add-hook 'eval-expression-minibuffer-setup-hook 'enable-paredit-mode)
-    ```
+  - Adding `enable-paredit-mode` to `eval-expression-minibuffer-setup-hook`
+    enables Paredit in eval-expression minibuffer.
 
     To test this, enter `M-:` to bring up the eval-expression minbuffer
     and type `(`.  Paredit should automatically insert the corresponding
     `)`.
 
-  - Enable Paredit while interactively evaluating Emacs Lisp expressions
-    in inferior-emacs-lisp-mode (IELM):
-
-    ```elisp
-      (add-hook 'ielm-mode-hook 'enable-paredit-mode)
-    ```
+  - Adding `enable-paredit-mode` to `ielm-mode-hook` enables Paredit
+    while interactively evaluating Emacs Lisp expressions in
+    `inferior-emacs-lisp-mode` (IELM).
 
     To test this, enter `M-x ielm RET`.  When the `*ielm*` buffer
     appears, type `(`.  Paredit should automatically insert the
     corresponding `)`.
 
-  - Enable Paredit in Lisp interaction mode:
-
-    ```elisp
-      (add-hook 'lisp-interaction-mode-hook 'enable-paredit-mode)
-    ```
+  - Adding `enable-paredit-mode` to `lisp-interaction-mode-hook`
+    enables Paredit in Lisp interaction mode.
 
     To test this, first open a non-Lisp file, say, `C-x C-f foo.txt
     RET`.  Now type `(`.  Note that no corresponding `)` is inserted
@@ -1612,37 +1630,32 @@ that case, you might also want to remove this package from the
     lisp-interaction-mode RET`.  Type `(` again.  Paredit should now
     automatically insert the corresponding `)`.
 
-  - Enable Paredit while editing Lisp code other than Emacs Lisp:
-
-    ```elisp
-      (add-hook 'lisp-mode-hook 'enable-paredit-mode))
-    ```
+  - Adding `enable-paredit-mode` to `lisp-mode-hook` enables Paredit
+    while editing Lisp code other than Emacs Lisp.
 
     To test this, open a new Common Lisp source file, say, `C-x C-f
     foo.lisp RET`.  Then type `(`.  Paredit should automatically insert
     the corresponding `)`.
 
-  - Stop Paredit from interfering with the behaviour of `RET` key in
-    eval-expression minibuffer (`M-:`) and IELM (`M-x ielm RET`):
-
-    ```elisp
-    (with-eval-after-load 'paredit
-      (define-key paredit-mode-map (kbd "RET") nil))
-    ```
-
-    By default, Paredit overrides the behaviour of the `RET` key such
-    that a newline is inserted whenever we press `RET` key.
-    Unfortunately, this behaviour is problematic in the
-    eval-expression minibuffer and IELM where we want to evaluate the
-    expression we have entered when we type `RET`.  Therefore, we
-    disable the overriding behaviour of Paredit using the above code.
-
-    The above code ensures that whenever Paredit is loaded, the `RET`
-    key binding in its keymap is set to `nil`, so that Paredit does
-    not override the default behaviour of the `RET` key.
+By default, Paredit overrides the behaviour of the `RET` key such that
+a newline is inserted whenever we press `RET` key.  Unfortunately,
+this behaviour is problematic in the eval-expression minibuffer and
+IELM where we want to evaluate the expression we have entered when we
+type `RET`.  Therefore, we disable the overriding behaviour of Paredit
+using the following code:
 
 
-### Rainbow Delimiters Configuration
+```elisp
+(with-eval-after-load 'paredit
+  (define-key paredit-mode-map (kbd "RET") nil))
+```
+
+The above code ensures that whenever Paredit is loaded, the `RET`
+key binding in its keymap is set to `nil`, so that Paredit does
+not override the default behaviour of the `RET` key.
+
+
+### Configure Rainbow Delimiters
 
 This section describes how to enable rainbow delimiters and configure
 it.  Rainbow Delimiters colour nested parentheses with different
@@ -1653,81 +1666,89 @@ If you decide not to use Rainbow Delimiters, you may skip this
 section.  In that case, you might also want to remove this package
 from the `dolist` loop discussed in the previous section.
 
-  - Enable Rainbow Delimiters while editing Emacs Lisp code:
+We enable Paredit in various modes pertaining to Lisp programming with
+the following Emacs Lisp code:
 
-    ```elisp
-    (when (fboundp 'rainbow-delimiters-mode)
-      (add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
-    ```
+```elisp
+(when (fboundp 'rainbow-delimiters-mode)
+  (dolist (hook '(emacs-lisp-mode-hook
+                  ielm-mode-hook
+                  lisp-interaction-mode-hook
+                  lisp-mode-hook))
+    (add-hook hook 'rainbow-delimiters-mode)))
+```
 
-    Then `when` macro call first checks if `rainbow-delimiters-mode`
-    is available.  If it is, then the `add-hook` function call sets up
-    a hook so that whenever `emacs-lisp-mode` gets activated,
-    `rainbow-delimiters-mode` also gets activated.
+Here is an explanation of the above code:
+
+  - Then `when` expression checks if `rainbow-delimiters-mode` is
+    available before setting up hooks to enable it in various modes.
+    If it is unavailable, then the hooks are not set up.
+
+  - The `dolist` expression iterates over hooks for various modes
+    where we want Rainbow Delimiters to be enabled.  In each
+    iteration, the `add-hook` expression adds the function
+    `rainbow-delimiters-mode` to each mode's hook.  This ensures that
+    whenever one of these modes gets activated,
+    `rainbow-delimiters-mode` is called thereby enabling Rainbow
+    Delimiters in that mode.
+
+  - Adding `rainbow-delimiters-mode` to `emacs-lisp-mode-hook` enables
+    Rainbow Delimiters while editing Emacs Lisp code.
 
     To test this open a new Emacs Lisp file, say, `foo.el`.  Then type
-    `((((`.  Rainbow Delimiters should colour each parenthesis
+    `(((`.  Rainbow Delimiters should colour each parenthesis
     differently.
 
-  - Enable Rainbow Delimiters while interactively evaluating Emacs Lisp
+  - Adding `rainbow-delimiters-mode` to `ielm-mode-hook` enables
+    Rainbow Delimiters while interactively evaluating Emacs Lisp
     expressions in inferior-emacs-lisp-mode (IELM):
 
-    ```elisp
-      (add-hook 'ielm-mode-hook 'rainbow-delimiters-mode)
-    ```
-
     To test this, enter `M-x ielm RET`.  When the `*ielm*` buffer comes
-    up, type `((((`.  Rainbow Delimiters should colour each parenthesis
+    up, type `(((`.  Rainbow Delimiters should colour each parenthesis
     differently.
 
-  - Enable Rainbow Delimiters in Lisp interaction mode:
-
-    ```elisp
-      (add-hook 'lisp-interaction-mode-hook 'rainbow-delimiters-mode)
-    ```
+  - Adding `rainbow-delimiters-mode` to `lisp-interaction-mode-hook`
+    enables Rainbow Delimiters in Lisp interaction mode.
 
     To test this, first open a non-Lisp file, say, `foo.txt`.  Now type
-    `((((`.  Then start Lisp interaction mode with the command `M-x
+    `(((`.  Then start Lisp interaction mode with the command `M-x
     lisp-interaction-mode RET`.  Rainbow Delimiters should now colour each
     parenthesis differently.
 
-  - Enable Rainbow Delimiters while editing Lisp code other than Emacs
-    Lisp:
-
-    ```elisp
-      (add-hook 'lisp-mode-hook 'rainbow-delimiters-mode))
-    ```
+  - Adding `rainbow-delimiters-mode` to `lisp-mode-hook` enables
+    Rainbow Delimiters while editing Lisp code other than Emacs Lisp:
 
     To test this, open a new Common Lisp source file, say, `foo.lisp`.
-    Then type `((((`.  Rainbow Delimiters should colour each parenthesis
+    Then type `(((`.  Rainbow Delimiters should colour each parenthesis
     differently.
 
-  - Make the parentheses more colourful:
-
-    ```elisp
-    (with-eval-after-load 'rainbow-delimiters
-      (set-face-foreground 'rainbow-delimiters-depth-1-face "#c66")  ; red
-      (set-face-foreground 'rainbow-delimiters-depth-2-face "#6c6")  ; green
-      (set-face-foreground 'rainbow-delimiters-depth-3-face "#69f")  ; blue
-      (set-face-foreground 'rainbow-delimiters-depth-4-face "#cc6")  ; yellow
-      (set-face-foreground 'rainbow-delimiters-depth-5-face "#6cc")  ; cyan
-      (set-face-foreground 'rainbow-delimiters-depth-6-face "#c6c")  ; magenta
-      (set-face-foreground 'rainbow-delimiters-depth-7-face "#ccc")  ; light gray
-      (set-face-foreground 'rainbow-delimiters-depth-8-face "#999")  ; medium gray
-      (set-face-foreground 'rainbow-delimiters-depth-9-face "#666")) ; dark gray
-    ```
-
-    The default colours that Rainbow Delimiters chooses for the nested
-    parentheses are too subtle to easily recognise the matching pair
-    of parentheses.  The above code makes the parentheses more
-    colourful so that matching pairs of parentheses are easier to
-    recognise.
-
 In the discussion above, you may have noticed that we did not enable
-Rainbow Delimiters for eval-expression.  That is because it does not
-work as expected as of Dec 2021.  See
+Rainbow Delimiters for eval-expression minibuffer.  That is because
+eval-expression minibuffer does not support syntax highlightng.
+Therefore enabling Rainbow Delimiters in it has no effect.  See
 https://github.com/Fanael/rainbow-delimiters/issues/57 for more
 details.
+
+The default colours that Rainbow Delimiters chooses for the nested
+parentheses are too subtle to easily recognise the matching pair of
+parentheses.  The following Emacs Lisp code makes the parentheses more
+colourful:
+
+```elisp
+(with-eval-after-load 'rainbow-delimiters
+  (set-face-foreground 'rainbow-delimiters-depth-1-face "#c66")  ; red
+  (set-face-foreground 'rainbow-delimiters-depth-2-face "#6c6")  ; green
+  (set-face-foreground 'rainbow-delimiters-depth-3-face "#69f")  ; blue
+  (set-face-foreground 'rainbow-delimiters-depth-4-face "#cc6")  ; yellow
+  (set-face-foreground 'rainbow-delimiters-depth-5-face "#6cc")  ; cyan
+  (set-face-foreground 'rainbow-delimiters-depth-6-face "#c6c")  ; magenta
+  (set-face-foreground 'rainbow-delimiters-depth-7-face "#ccc")  ; light gray
+  (set-face-foreground 'rainbow-delimiters-depth-8-face "#999")  ; medium gray
+  (set-face-foreground 'rainbow-delimiters-depth-9-face "#666")) ; dark gray
+```
+
+The colours chosen above make matching pairs of parentheses easier to
+recognise.
 
 
 ### End of File
