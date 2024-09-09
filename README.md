@@ -71,13 +71,13 @@ Who Is This For?
 ----------------
 
 Are you an absolute beginner to Emacs?  Are you so new to Emacs that
-you do not even have `~/.emacs.d` on your file system?  Have you come
-across recommendations to use starter kits like Doom Emacs, Spacemacs,
-etc. but then you wondered if you could use vanilla Emacs and
-customise it slowly to suit your needs without having to sacrifice
-your productivity in the initial days of using Emacs?  Do you also
-want your Emacs to look sleek from day zero?  If you answered "yes" to
-most of these questions, then this project is for you.
+you do not even have the `~/.emacs.d/` directory on your file system?
+Have you come across recommendations to use starter kits like Doom
+Emacs, Spacemacs, etc. but then you wondered if you could use vanilla
+Emacs and customise it slowly to suit your needs without having to
+sacrifice your productivity in the initial days of using Emacs?  Do
+you also want your Emacs to look sleek from day zero?  If you answered
+"yes" to most of these questions, then this project is for you.
 
 The [`init.el`] file in this project provides a quick way to get
 started with setting up your Emacs environment.  This document
@@ -716,7 +716,7 @@ choose another theme, or skip this section.
       (set-face-foreground 'lazy-highlight "#000"))
     ```
 
-Personal note: I see that many recent colour themes choose a dim
+**Personal note:** I see that many recent colour themes choose a dim
 colour for comments in code.  Such colour themes intend to
 underemphasise the comments.  I think comments play an important role
 in code meant to be read by humans and should be emphasised
@@ -1559,6 +1559,19 @@ and evaluates an Emacs Lisp expression that runs the
 `install-packages` function followed by `kill-emacs`.  As a result,
 this command installs the packages configured in the code discussed
 above and quits Emacs.
+
+**Alternative:** If you know enough Emacs already, you might notice
+that this project does not use the `use-package` package.  The
+`use-package` package allows us to install and configure packages
+declaratively such that the configuration of each package is neatly
+contained within one `use-package` expression.  The author of this
+project has been using Emacs long before `use-package` existed and
+prefers a more traditional method of installing and configuring
+packages using `package.el` and `with-eval-after-load`.  However, if
+you want to explore installing and configuring packages declaratively,
+please take a look at the [use-package User Manual][use-package].
+
+[use-package]: https://www.gnu.org/software/emacs/manual/html_node/use-package/
 
 
 ### Configure Paredit
