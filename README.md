@@ -152,7 +152,7 @@ Get Started
 This section helps you to set up Emfy quickly and see what the end
 result looks like.  Perform the following steps to get started:
 
- 1. Install Emacs 29.1 or later.
+ 1. Install Emacs 28.1 or later.
 
     On macOS, enter the following command if you have
     [Homebrew](https://brew.sh):
