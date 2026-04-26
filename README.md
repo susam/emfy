@@ -1779,7 +1779,7 @@ found in Emacs packages.  Here, we simply declare that this Emacs
 initialisation file provides a feature named `init`, only for the sake
 of completeness.
 
-Other Emacs Lisp programs can test whether a feature is availabe using
+Other Emacs Lisp programs can test whether a feature is available using
 the `featurep` function.  For example, Paredit provides the feature
 named `paredit`.  To test if this feature is available, type `M-:
 (featurep 'paredit) RET`.
